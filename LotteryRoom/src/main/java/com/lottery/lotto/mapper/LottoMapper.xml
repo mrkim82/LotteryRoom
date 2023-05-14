@@ -95,7 +95,7 @@
 	<!-- 김욱환 -->
 	<insert id="insertAutoNum" parameterType="lotto">
 		insert into lottery_num values
-		(#{ltNo}, #{ltTimes} + 1, #{ltFir}, #{ltSec}, #{ltThr}, #{ltFour}, #{ltFive}, #{ltSix})
+		(#{ltNo}, #{ltTimes}, #{ltFir}, #{ltSec}, #{ltThr}, #{ltFour}, #{ltFive}, #{ltSix})
 	</insert>
 	
 </mapper>

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <style>
 form {
 	width: 300px;
@@ -10,29 +10,30 @@ form {
 	border: .10rem solid #e5e5e5;
 	padding-bottom: 10px;
 }
+
 fieldset {
 	border: none;
 }
-.bold{
-	width: 994px; 
+
+.bold {
+	width: 994px;
 	height: 240px;
-	
 	font-weight: bold;
 	text-align: center;
 	background-color: #ffffff;
 	border: .10rem solid #e5e5e5;
 	padding-bottom: 10px;
 }
-.bolda{
-	width: 244px; 
+
+.bolda {
+	width: 300px;
 	height: 240px;
-	
-	font-weight: bold;
 	text-align: center;
 	background-color: #ffffff;
 	border: .10rem solid #e5e5e5;
 	padding-bottom: 10px;
 }
+
 legend {
 	font-weight: bold;
 	margin-top: 20px;
@@ -59,21 +60,20 @@ legend {
 	font-family: "Playfair Display", Georgia, "Times New Roman", serif
 }
 
-.container1{
+.container1 {
 	color: #333;
 	margin: 0 auto;
 	text-align: center;
 }
 
-h3{
+h3 {
 	font-weight: bold;
 	letter-spacing: .075rem;
 	text-transform: uppercase;
-	
 }
 
-li{
-	display:inline-block;
+li {
+	display: inline-block;
 	font-size: 1.5rem;
 	list-style-type: none;
 	padding-right: 1em;
@@ -81,81 +81,93 @@ li{
 	text-transform: uppercase;
 }
 
-li span{
-	display: block;
+li span {
 	font-size: 2.3rem;
 }
 
-.emoji{
+.emoji {
 	display: none;
-
 }
 
-.emoji span{
+.emoji span {
 	font-size: 2rem;
-
 }
 
+.btn {
+	width: 50px;
+	height: 50px;
+	font-size: 30px;
+	border-width: 1px;
+	background-color: rgb(255, 255, 255);
+	font-size: 20px;
+	border: 1px solid lightgray;
+	margin: 5px;
+	border-radius: 30px;
+	pointer-events: none;
+	font-weight: bold;
+}
 </style>
+
 <tr>
 	<td style="width: 1000px; height: 200px;">
-	<fieldset class="bold">
-	<div>
-	<table>
-	<tr>
-		<td id="ltTimes1"></td> <td>회 당첨결과</td><td>(</td><td id="winDate"></td><td>) 추첨</td>
-	</tr>
-	<tr>
-		<td><button id="fir"></button></td>
-		<td><button id="sec"></button></td>
-		<td><button id="thr"></button></td>
-		<td><button id="four"></button></td>
-		<td><button id="five"></button></td>
-		<td><button id="six"></button></td>
-		<td> + </td>
-		<td><button id="bonus"></button></td>
-	</tr>
-	<tr>
-		<td id="ltTimes2"></td><td>회차 당첨금액</td><td><b class="cumulativeAmount"></b>원</td>
-	</tr>
-	</table>
-	</div>
-	<div class="container1">
-			<h3 id="ltTimes3">회차 추첨일</h3>
-			<div id="countdown">
-				<ul>
-					<li><span id="days"></span>Days</li>
-					<li><span id="hours"></span>Hours</li>
-					<li><span id="minutes"></span>Minutes</li>
-					<li><span id="seconds"></span>Seconds</li>
-				</ul>
+		<fieldset class="bold">
+			<div>
+				<table style="width: 997px;">
+					<tr>
+						<td style="font-size: 25px;"><b id="ltTimes1"></b><b>회</b> 당첨결과 
+					</tr>
+					<tr>
+						<td>(<span id="winDate"></span>)추첨</td>
+					</tr>
+					<tr>
+						<td><button class="btn" id="btn1"></button>
+							<button class="btn" id="btn2"></button>
+							<button class="btn" id="btn3"></button>
+							<button class="btn" id="btn4"></button>
+							<button class="btn" id="btn5"></button>
+							<button class="btn" id="btn6"></button> <span style="font-size: 40px; position: relative; top: 8px;"> + </span>
+							<button class="btn" id="btn7"></button></td>
+					</tr>
+					<tr>
+						<td><b id="ltTimes2"></b>회차 당첨금액 <b class="cumulativeAmount" style="font-size: 20px; color: brown;"></b>원</td>
+					</tr>
+				</table>
 			</div>
-
-			<div id="content" class="emoji">
-				<span>Next winner is you!</span>
+			<br>
+			<div class="container1">
+				<h3 id="ltTimes3">회차 추첨일</h3>
+				<div id="countdown">
+					<ul>
+						<li><span id="days"></span> 일 </li>
+						<li><span id="hours"></span> 시간 </li>
+						<li><span id="minutes"></span> 분 </li>
+						<li><span id="seconds"></span> 초 </li>
+					</ul>
+				</div>
 			</div>
-		</div>
-	</fieldset>
+		</fieldset>
 	</td>
 	<td><c:choose>
 			<c:when test="${UserId == null }">
 				<form action="login.do" method="get" style="height: 240px;">
 					<fieldset>
-						<legend>이쿠조 복권방</legend>
+						<legend>가즈아 복권방</legend>
 						<button type="submit" class="login">Lottery Room Login</button>
 					</fieldset>
 					<fieldset>
 						<a class="idpw" href="#">아이디 찾기</a><a class="idpw"> / </a><a
 							class="idpw" href="#">비밀번호 찾기</a><a class="idpw"> / </a><a
-							class="idpw" href="membership.do">회원가입</a>
-						<a href="javascript:kakaoLogin();"><img src="https://www.gb.go.kr/Main/Images/ko/member/certi_kakao_login.png" style="margin-top:10px;height:40px;width:auto;"></a>
+							class="idpw" href="membership.do">회원가입</a> <a
+							href="javascript:kakaoLogin();"><img
+							src="https://www.gb.go.kr/Main/Images/ko/member/certi_kakao_login.png"
+							style="margin-top: 10px; height: 40px; width: auto;"></a>
 					</fieldset>
 				</form>
 			</c:when>
 			<c:otherwise>
 				<form action="logout.do" method="get" style="height: 240px;">
 					<fieldset>
-						<p style="margin-top: 40px;">${UserName }님 </p>
+						<p style="margin-top: 40px;">${UserName }님</p>
 					</fieldset>
 					<fieldset>
 						<a class="idpw" href="logout.do">로그아웃</a><a class="idpw"> / </a><a
@@ -167,57 +179,60 @@ li span{
 </tr>
 
 <tr>
-	<td style="width: 250px; height: 500px;">
-	<fieldset class="bolda" style="height: 490px;">
-	<div class="part2" style="float: left;">
-		<h4>실시간 예상 당첨금</h4>
-		<table class="part2" style="margin-top: 20px;">
-			<tr>
-				<td class="textleft" style="color: firebrick;">1등</td>
-				<td id="firWn" style="color: firebrick;"></td>
-			</tr>
-		</table>
-		<table class="part2">
-			<tr>
-				<td class="textleft">2등</td>
-				<td id="secWn"></td>
-			</tr>
-		</table >
-		<table class="part2">
-			<tr>
-				<td class="textleft">3등</td>
-				<td id="thrWn"></td>
-			</tr>
-		</table>
-		<table class="part2">
-			<tr>
-				<td class="textleft">4등</td>
-				<td id="fourWn"></td>
-			</tr>
-		</table>
-		<table class="part2">
-			<tr>
-				<td class="textleft">5등</td>
-				<td id="fifWn"></td>
-			</tr>
-		</table>
-	</div>
-	</fieldset>
-	</td>
 	<td style="width: 1000px; height: 500px;">
-	<fieldset class="bold" style="height: 490px;">
-	<iframe style="width: 100%; height: 100%;" src="mainBoard.do?mbGrade=E"></iframe>
-	</fieldset>
+		<fieldset class="bold" style="height: 490px;">
+			<iframe style="width: 100%; height: 100%;"
+				src="mainBoard.do?mbGrade=E"></iframe>
+		</fieldset>
+	</td>
+
+	<td style="width: 200px; height: 500px;">
+		<fieldset class="bolda" style="height: 490px;">
+			<div class="part2" style="float: left;">
+				<h4>실시간 예상 당첨금</h4>
+				<table class="part2" style="margin-top: 20px;">
+					<tr>
+						<td class="textleft" style="color: firebrick;">1등</td>
+						<td id="firWn" style="color: firebrick;"></td>
+					</tr>
+				</table>
+				<table class="part2">
+					<tr>
+						<td class="textleft">2등</td>
+						<td id="secWn"></td>
+					</tr>
+				</table>
+				<table class="part2">
+					<tr>
+						<td class="textleft">3등</td>
+						<td id="thrWn"></td>
+					</tr>
+				</table>
+				<table class="part2">
+					<tr>
+						<td class="textleft">4등</td>
+						<td id="fourWn"></td>
+					</tr>
+				</table>
+				<table class="part2">
+					<tr>
+						<td class="textleft">5등</td>
+						<td id="fifWn"></td>
+					</tr>
+				</table>
+			</div>
+		</fieldset>
 	</td>
 </tr>
-<div style="position:fixed; margin-left:1180px; margin-top:600px;">
-<a id="chat-channel-button" href="javascript:Kakaochat()">
-  <img src="./images/kakaotalk.png" style="width:80px; height:80px;"
-    alt="카카오톡 채널 채팅하기 버튼" />
-</a>
+<div style="position: fixed; margin-left: 1180px; margin-top: 600px;">
+	<a id="chat-channel-button" href="javascript:Kakaochat()"> <img
+		src="./images/kakaotalk.png" style="width: 80px; height: 80px;"
+		alt="카카오톡 채널 채팅하기 버튼" />
+	</a>
 </div>
 <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.1.0/kakao.min.js"
-  integrity="sha384-dpu02ieKC6NUeKFoGMOKz6102CLEWi9+5RQjWSV0ikYSFFd8M3Wp2reIcquJOemx" crossorigin="anonymous"></script>
+	integrity="sha384-dpu02ieKC6NUeKFoGMOKz6102CLEWi9+5RQjWSV0ikYSFFd8M3Wp2reIcquJOemx"
+	crossorigin="anonymous"></script>
 <script>
   Kakao.init('e2c2c7baf351005289e1b04b186f5015'); // 사용하려는 앱의 JavaScript 키 입력
 </script>
@@ -286,7 +301,7 @@ document.getElementById("fifWn").innerHTML = fifWn;
         	 let xhtp = new XMLHttpRequest();
              xhtp.open('post', 'addLotto.do');
              xhtp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-             xhtp.send('cumulativeAmount=' + 1234817000);
+             xhtp.send('cumulativeAmount=${CuReward}');
          	 xhtp.onload = function () {
              let result = JSON.parse(xhtp.response);
              if (result.retCode == 'Success') {
@@ -309,13 +324,13 @@ document.getElementById("fifWn").innerHTML = fifWn;
              		let cumulativeAmount = document.querySelector(".cumulativeAmount");
              		cumulativeAmount.innerText = ltInfo.ltInfo.cumulativeAmount;
 
-             		let winFir = document.getElementById('fir');
-             		let winSec = document.getElementById('sec');
-             		let winThr = document.getElementById('thr');
-             		let winFour = document.getElementById('four');
-             		let winFive = document.getElementById('five');
-             		let winSix = document.getElementById('six');
-             		let winBonus = document.getElementById('bonus');
+             		let winFir = document.getElementById('btn1');
+             		let winSec = document.getElementById('btn2');
+             		let winThr = document.getElementById('btn3');
+             		let winFour = document.getElementById('btn4');
+             		let winFive = document.getElementById('btn5');
+             		let winSix = document.getElementById('btn6');
+             		let winBonus = document.getElementById('btn7');
              		winFir.innerText = ltInfo.ltInfo.winFir;
              		winSec.innerText = ltInfo.ltInfo.winSec;
              		winThr.innerText = ltInfo.ltInfo.winThr;
@@ -349,17 +364,25 @@ document.getElementById("fifWn").innerHTML = fifWn;
 
 		let winDate = document.getElementById('winDate');
 		winDate.innerText = ltInfo.ltInfo.winDate;
+ 		
+ 		let originalDate = winDate.innerText;
+ 		let formattedDate = new Date(originalDate).toISOString().split('T')[0];
+ 		winDate.innerText = formattedDate;
 		
 		let cumulativeAmount = document.querySelector(".cumulativeAmount");
 		cumulativeAmount.innerText = ltInfo.ltInfo.cumulativeAmount;
+		
+		let amount = parseInt(cumulativeAmount.innerText);
+ 		let formattedAmount = amount.toLocaleString();
+ 		cumulativeAmount.innerText = formattedAmount;
 
-		let winFir = document.getElementById('fir');
-		let winSec = document.getElementById('sec');
-		let winThr = document.getElementById('thr');
-		let winFour = document.getElementById('four');
-		let winFive = document.getElementById('five');
-		let winSix = document.getElementById('six');
-		let winBonus = document.getElementById('bonus');
+		let winFir = document.getElementById('btn1');
+		let winSec = document.getElementById('btn2');
+		let winThr = document.getElementById('btn3');
+		let winFour = document.getElementById('btn4');
+		let winFive = document.getElementById('btn5');
+		let winSix = document.getElementById('btn6');
+		let winBonus = document.getElementById('btn7');
 		winFir.innerText = ltInfo.ltInfo.winFir;
 		winSec.innerText = ltInfo.ltInfo.winSec;
 		winThr.innerText = ltInfo.ltInfo.winThr;
@@ -367,6 +390,36 @@ document.getElementById("fifWn").innerHTML = fifWn;
 		winFive.innerText = ltInfo.ltInfo.winFive;
 		winSix.innerText = ltInfo.ltInfo.winSix;
 		winBonus.innerText = ltInfo.ltInfo.winBonus;
+
+		let winFirValue = parseInt(winFir.innerText);
+		let winSecValue = parseInt(winSec.innerText);
+		let winThrValue = parseInt(winThr.innerText);
+		let winFourValue = parseInt(winFour.innerText);
+		let winFiveValue = parseInt(winFive.innerText);
+		let winSixValue = parseInt(winSix.innerText);
+		let winBonusValue = parseInt(winBonus.innerText);
+		
+		function changeButtonColor(button, value) {
+			  if (value >= 1 && value <= 10) {
+			    button.style.backgroundColor = 'gold';
+			  } else if (value >= 11 && value <= 20) {
+			    button.style.backgroundColor = 'lightskyblue';
+			  } else if (value >= 21 && value <= 30) {
+			    button.style.backgroundColor = 'lightcoral';
+			  } else if (value >= 31 && value <= 40) {
+			    button.style.backgroundColor = 'lightgray';
+			  } else if (value >= 41 && value <= 45) {
+			    button.style.backgroundColor = 'lightgreen';
+			  }
+			}
+		
+		changeButtonColor(winFir, winFirValue);
+		changeButtonColor(winSec, winSecValue);
+		changeButtonColor(winThr, winThrValue);
+		changeButtonColor(winFour, winFourValue);
+		changeButtonColor(winFive, winFiveValue);
+		changeButtonColor(winSix, winSixValue);
+		changeButtonColor(winBonus, winBonusValue);
 	} 
 
 //e800e9ce61449ded246202aad160d909
