@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<properties resource="com/lottery/common/db.properties"></properties>
+	<settings>
+		<setting name="mapUnderscoreToCamelCase" value="true" />
+		<setting name="jdbcTypeForNull" value="NULL"/>
+	</settings>
+	<typeAliases>
+		<typeAlias alias="multi" type="com.lottery.multiboard.domain.MultiVO" />
+		<typeAlias alias="cs" type="com.lottery.csboard.domain.CSVO" />
+		<typeAlias alias="reply" type="com.lottery.reply.domain.ReplyVO" />
+		<typeAlias alias="lotteryuser" type="com.lottery.lotteryuser.domain.LotteryUserVO" />
+		<typeAlias alias="lotto" type="com.lottery.lotto.domain.LottoVO" />
+	</typeAliases>
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver" value="${driver}" />
+				<property name="url" value="${url}" />
+				<property name="username" value="${username}" />
+				<property name="password" value="${password}" />
+			</dataSource>
+		</environment>
+	</environments>
+	<mappers>
+		<mapper resource="com/lottery/multiboard/mapper/MultiMapper.xml" />
+		<mapper resource="com/lottery/csboard/mapper/CSMapper.xml" />
+		<mapper resource="com/lottery/reply/mapper/ReplyMapper.xml" />
+		<mapper resource="com/lottery/lotteryuser/mapper/LotteryUserMapper.xml" />
+		<mapper resource="com/lottery/lotto/mapper/LottoMapper.xml" />
+	</mappers>
+</configuration>

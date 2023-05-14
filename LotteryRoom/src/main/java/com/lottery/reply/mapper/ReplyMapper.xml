@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lottery.reply.mapper.ReplyMapper">
+	<select id="replyList" parameterType="reply" resultType="reply">
+		select * from reply r join lottery_user l on (r.user_no = l.user_no ) where mb_id=#{mbId} or cb_id=#{cbId} 
+		order by 1 
+	</select>
+	
+	<insert id="replyMultiAdd" parameterType="reply">
+		<selectKey keyProperty="replyId" resultType="int" order="BEFORE">
+			select reply_seq.nextval from dual
+		</selectKey>
+		insert into reply values (#{replyId}, #{mbId}, null, #{userNo}, #{replySubject}, sysdate)
+	</insert>
+	
+	<insert id="replyCSAdd" parameterType="reply">
+		<selectKey keyProperty="replyId" resultType="int" order="BEFORE">
+			select reply_seq.nextval from dual
+		</selectKey>
+		insert into reply values (#{replyId}, null, #{cbId}, #{userNo}, #{replySubject}, sysdate)
+	</insert>
+	
+	<delete id="replyRemove" parameterType="int">
+		delete from reply where reply_id = #{replyId}
+	</delete>
+	
+	<select id="replyGet" parameterType="int" resultType="reply">
+		select * from reply r join lottery_user l on (r.user_no = l.user_no) where r.reply_id = #{replyId}
+	</select>
+	
+	<update id="replyUpdate" parameterType="reply">
+		update reply set reply_subject = #{replySubject} where reply_id = #{replyId}
+	</update>
+	
+</mapper>

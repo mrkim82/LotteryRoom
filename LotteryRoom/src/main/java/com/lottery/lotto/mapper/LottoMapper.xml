@@ -1,0 +1,101 @@
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lottery.lotto.mapper.LottoMapper">	
+	<insert id="addLottoRound" parameterType="int">
+		insert into win
+		values (win_seq.nextval, #{cumulativeAmount}, sysdate)
+	</insert>
+	<insert id="addRandomLotto" parameterType="lotto">
+		insert into win_num(lt_times, win_fir, win_sec, win_thr, win_four, win_five, win_six, win_bonus) 
+		values(#{ltTimes}, #{winFir}, #{winSec}, #{winThr}, #{winFour}, #{winFive}, #{winSix}, #{winBonus})
+	</insert>
+	<insert id="addWinBoard" parameterType="lotto">
+		insert into win_board
+		values(#{ltTimes}, #{rank}, 
+ 		(select count(*) from (select t.lt_fir,t.lt_sec,t.lt_thr,t.lt_four,t.lt_five,t.lt_six,w.win_fir, w.win_sec, w.win_thr, w.win_four, w.win_five, w.win_six,
+        decode((t.lt_fir -  w.win_fir ) * 
+                (t.lt_fir -  w.win_sec ) *
+                (t.lt_fir - w.win_thr ) *
+                (t.lt_fir - w.win_four ) *
+                (t.lt_fir - w.win_five ) *
+                (t.lt_fir - w.win_six ) , 0 , 2 , decode(t.lt_fir,w.win_bonus,1,0)) +
+        decode((t.lt_sec -  w.win_fir ) *
+                (t.lt_sec -  w.win_sec ) *
+                (t.lt_sec - w.win_thr ) *
+                (t.lt_sec - w.win_four ) *
+                (t.lt_sec - w.win_five ) *
+                (t.lt_sec - w.win_six ) , 0 , 2 , decode(t.lt_sec,w.win_bonus,1,0)) +
+        decode((t.lt_thr -  w.win_fir ) *
+                (t.lt_thr -  w.win_sec ) *
+                (t.lt_thr - w.win_thr ) *
+                (t.lt_thr - w.win_four ) *
+                (t.lt_thr - w.win_five ) *
+                (t.lt_thr - w.win_six ) , 0 , 2 , decode(t.lt_thr,w.win_bonus,1,0)) +
+        decode((t.lt_four -  w.win_fir ) *
+                (t.lt_four -  w.win_sec ) *
+                (t.lt_four - w.win_thr ) *
+                (t.lt_four - w.win_four ) *
+                (t.lt_four - w.win_five ) *
+                (t.lt_four - w.win_six ) , 0 , 2 , decode(t.lt_four,w.win_bonus,1,0)) +
+        decode((t.lt_five - w.win_fir ) *
+                (t.lt_five - w.win_sec ) *
+                (t.lt_five - w.win_thr ) *
+                (t.lt_five - w.win_four ) *
+                (t.lt_five - w.win_five ) *
+                (t.lt_five - w.win_six ) , 0 , 2 , decode(t.lt_five,w.win_bonus,1,0)) +
+        decode((t.lt_six - w.win_fir ) *
+                (t.lt_six - w.win_sec ) *
+                (t.lt_six - w.win_thr ) *
+                (t.lt_six - w.win_four ) *
+                (t.lt_six - w.win_five ) *
+                (t.lt_six - w.win_six ) , 0 , 2 , decode(t.lt_six,w.win_bonus,1,0)) totsum
+   		from lottery_num t join win_num w on (t.lt_times = w.lt_times) 
+   		where  w.lt_times = (select lt_times  
+   							 from (select rownum rn, win.* from win order by lt_times desc) 
+   							 where rownum=1))
+  		where totsum = #{totsum}), 
+  		(select cumulative_amount from (select * from win order by lt_times desc) where rownum = 1)*#{proportion})
+	</insert>
+
+	<select id="lottoNumberList" resultType="lotto">
+		select * from win w join win_num n on (w.lt_times = n.lt_times)
+		where w.lt_times = (select MAX(lt_times)
+                        	from win)
+	</select>
+	<select id="lottoMoneyList" parameterType="int" resultType="lotto">
+		select * from win_board b left join win w on(b.lt_times = w.lt_times)
+		where b.lt_times = #{ltTimes} order by win_rank
+	</select>
+	<select id="getLtTimes" resultType="int">
+		select lt_times  from (select rownum rn, win.* from win order by lt_times desc) where rownum=1
+	</select>
+	<select id="selLtTimes" parameterType="int" resultType="lotto">
+		select * from win w join win_num n on (w.lt_times = n.lt_times)
+		where w.lt_times = #{ltTimes}
+	</select>
+	<select id="showLtTimes" resultType="lotto">
+		select w.lt_times from win w join win_num n on (w.lt_times = n.lt_times) order by w.lt_times desc
+	</select>
+	<select id="cumulativeReward" parameterType="int" resultType="int">
+		select count(*) from lottery_num where lt_times = #{ltTimes}
+	</select>
+	
+	
+	<!-- 김욱환 -->
+	<insert id="insertAutoLottery" parameterType="lotto">
+		insert into lottery values
+		(lt_seq.nextval, #{userNo}, #{ltPrice}, sysdate)
+	</insert>
+	
+	<select id="getAutoNum" resultType="int">
+		select lt_no from (select rownum rn, lottery.* from lottery order by lt_no desc) where rownum = 1
+	</select>
+	
+	<!-- 김욱환 -->
+	<insert id="insertAutoNum" parameterType="lotto">
+		insert into lottery_num values
+		(#{ltNo}, #{ltTimes} + 1, #{ltFir}, #{ltSec}, #{ltThr}, #{ltFour}, #{ltFive}, #{ltSix})
+	</insert>
+	
+</mapper>

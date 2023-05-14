@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lottery.csboard.mapper.CSMapper">
+	
+	<select id="getBoard" parameterType="int" resultType="cs">
+		select * from cs_board m join lottery_user l on (m.user_no = l.user_no) where m.cb_id=#{cbId}
+	</select>
+	
+	<insert id="addBoard" parameterType="cs">
+		insert into cs_board values(cb_seq.nextval, #{userNo}, #{cbGrade}, #{cbTitle}, #{cbSubject}, sysdate, #{cbAttach}, 0)
+	</insert>
+	
+	<delete id="removeBoard" parameterType="int">
+		delete from cs_board where cb_id = #{cbId}
+	</delete>
+	
+	<update id="modifyBoard" parameterType="cs">
+		update cs_board set cb_title = #{cbTitle}, cb_subject = #{cbSubject}, cb_attach = #{cbAttach} where cb_id = #{cbId}
+	</update>
+	
+	<update id="updateCount" parameterType="int">
+		update cs_board set
+		cb_hit=cb_hit+1 where cb_id=#{cbId}
+	</update>
+	
+	<select id="csPage"  parameterType="cs" resultType="cs">
+		<![CDATA[
+		select b.*
+		from (select rownum rn, a.*
+			from (select * from cs_board m join lottery_user l on (m.user_no = l.user_no) 
+			where cb_grade = #{cbGrade}
+			order by 1 desc) a
+			where rownum <= #{page} * 10) b
+		where b.rn > (#{page} - 1) * 10
+		]]>
+	</select>
+	
+	<select id="getCount" parameterType="String" resultType="int">
+		select count(*) from cs_board where cb_grade = #{cbGrade}
+	</select>
+</mapper>
