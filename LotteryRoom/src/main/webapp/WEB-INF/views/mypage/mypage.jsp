@@ -51,106 +51,89 @@ a{
 text-decoration: none;
 color : black;
 }
-  .tr {
-    border: 1px solid #ddd;
-  }
-  
-  td {
-    padding: 10px 0;
-    padding-left: 10px;
-    }
-
-  /* 셀 스타일링 */
-  td, th {
-    border: 1px solid #ddd; /* 셀 경계 스타일 지정 */
-    padding: 8px; /* 셀 안쪽 여백 설정 */
-  }
-  
-  #mypage{
-  	border-collapse: collapse;
-  	width: 40%;
-  }
-  
-.mileage-table {
-  display: inline-block;
-  width: 50%; /* 원하는 너비 설정 */
-  margin-right: 20px; /* 오른쪽 여백 설정 */
-  vertical-align: top; /* 상단 정렬 */
-}
-
-#div{
-	padding: 5px;
-	margin-right: 20px;
-}
 </style>
-	
-	
-	
-	
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
 <!-- ===========================  내 정보 =========================== -->
-<form action="updatemember.do" method="get" novalidate>
-	<table id="mypage">
-  <tr class="tr">
-    <td>이름</td>
-    <td>${UserName} 님</td>
-    <td style="display: none;"><input name="userNo" value="${UserNo}"></td>
-  </tr>  	
-  <tr class="tr">
-    <td>아이디</td>
-    <td>${UserId}</td>
-  </tr>
-  
-  <tr class="tr">
-    <td>연락처</td>
-    <td>${Phone}</td>
-  </tr>
-  
-    <tr class="tr">
-    <td>주소</td>
-    <td>${Address}</td>
-  </tr>
-  
-   <tr class="tr">
-    <td>회원등급</td>
-      <c:choose>
-        <c:when test="${UserGrade == 'C'}">
-          <td>일반회원</td>
-        </c:when>
-        <c:when test="${UserGrade == 'A'}">
-          <td>관리자</td>
-        </c:when>
-      </c:choose>
-  </tr>
-</table>
-<button type="submit" class="btn btn-primary" style="width: 10%;">정보수정</button>
-
+	<div style="width:1000px;position:relative">
+	<form action="updatemember.do" method="get" novalidate>
+	<div>
+	<div style="border:1px solid black; padding:20px; width:320px;">
+		<table class="mypage" style="width:240px;">	
+	  <tr style="border-bottom: 3px solid blue;">
+	  
+	    <td style="padding: 10px; color: blue; font-weight: bold;">
+		  <span style="display: inline-block; text-align:center; white-space: nowrap;">
+		    <img src="./images/사용자이미지.jpg" style="width: 50px; height: 50px;">
+		    ${UserName}님
+		  </span>
+		</td>
+	    
+	    <td style="display: none;"><input name="userNo" value="${UserNo}"></td>
+	  </tr>  	
+	  <tr style="border-bottom: 1px solid #e9e9e9; padding: 10px;">
+	    <td style="border-bottom: 1px solid #e9e9e9; padding: 10px;">아이디</td>
+	    <td style="border-bottom: 1px solid #e9e9e9; padding: 10px;">${UserId}</td>
+	  </tr>
+	  
+	  <tr class="tr">
+	    <td style="border-bottom: 1px solid #e9e9e9; padding: 10px;">연락처</td>
+	    <td style="border-bottom: 1px solid #e9e9e9;padding: 10px;">${Phone}</td>
+	  </tr>
+	  
+	    <tr class="tr">
+	    <td style="border-bottom: 1px solid #e9e9e9; padding: 10px;">주소</td>
+	    <td style="border-bottom: 1px solid #e9e9e9; padding: 10px;">${Address}</td>
+	  </tr>
+	  
+	   <tr class="tr">
+	    <td style="border-bottom: 1px solid #e9e9e9; padding: 10px;">회원등급</td>
+	      <c:choose>
+	        <c:when test="${UserGrade == 'C'}">
+	          <td style="border-bottom: 1px solid #e9e9e9; padding: 10px;">일반회원</td>
+	        </c:when>
+	        <c:when test="${UserGrade == 'A'}">
+	          <td style="border-bottom: 1px solid #e9e9e9; padding: 10px;">관리자</td>
+	        </c:when>
+	      </c:choose>
+	  </tr>
+	<tr><td><button type="submit" style="position: relative; top:10px; left: 88px;" class="btn btn-primary" style="width: 10%;">정보수정</button></td></tr>
+	</table>
+	</div>
+	</div>
 
 
 <!-- ===========================  마일리지 현황 =========================== -->
-	<div id="div">
-  <table class="mileage-table">
-    <tr class="tr">
+	<div id="div" style="width:500px; position:absolute; right:10px; top:0px; padding:0px; border: 1px solid black; padding: 30px; width:400px;">
+  <table class="mypage" style="border-collapse: collapse;">
+    <tr style="width: 200px">
       <td style="display: none;">이름</td>
       <td style="display: none;">${UserName} 님</td>
       <td style="display: none;"><input name="userNo" value="${UserNo}"></td>
-    </tr>    
-    <tr class="tr">
-      <td>보유 마일리지 :</td>
-      <td>${Mileage}</td>
     </tr>
+    
+	    <tr>
+    	    <td><span style="display: inline-block; text-align:center; white-space: nowrap;">
+		    <img src="./images/돈.jpg" style="width: 50px; height: 50px;">회원님의 마일리지 현황입니다.</span></td>
+		</tr>
+		
+	<tr class="tr" style="background-color: #DAE3F3; top:10px;">
+	    <td style="border-bottom: 1px solid #e9e9e9; padding: 10px;">총 마일리지</td>
+	    <td style="border-bottom: 1px solid #e9e9e9; padding: 10px; color:red; font-weight: bold; ">${Mileage}</td>
+	  </tr>
+    
+    <tr>
+    <td><button type="button" style="position: relative; left: 10px;" class="btn btn-primary" onclick="location.href='recharge.jsp'">충전하기</button></td>
+    <td><button type="button" style="position: relative; left: 0px;" class="btn btn-primary" onclick="minus()">출금하기</button></td>
+    </tr>
+    
   </table>
-
-  <div>
-    <button type="button" onclick="location.href='recharge.jsp'">충전하기</button>
-    <button type="button" onclick="minus()">출금하기</button>
-  </div>
 </div>
  </form>
+</div>
  
  <!-- ===========================  구매정보 =========================== -->
 <div>
