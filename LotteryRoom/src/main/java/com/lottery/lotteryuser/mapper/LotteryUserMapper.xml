@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lottery.lotteryuser.mapper.LotteryUserMapper">
+   <select id="loginCheck" parameterType="lotteryuser" resultType="lotteryuser">
+      select * from lottery_user where
+      user_id=#{userId} and user_pw=#{userPw}
+   </select>
+   <select id="getUserInfo" parameterType="String" resultType="lotteryuser">
+      select * from lottery_user where
+      user_id=#{userId}
+   </select>
+   <insert id="insertMembership" parameterType="lotteryuser">
+      insert into lottery_user 
+      values(user_seq.nextval, #{userName}, #{userId}, #{userPw}, #{address}, #{phone}, 0, 'C', sysdate, #{birthYear}, #{birthMonth}, #{birthDay})
+   </insert>
+   <update id="plusMileage">
+      update lottery_user
+      set MILEAGE = MILEAGE + #{mileage}
+      where USER_ID = #{userId}
+   </update>
+   <select id="kakaoLogin" parameterType="String" resultType="lotteryuser">
+      select * from lottery_user where user_id=#{userId}
+   </select>
+   
+   <update id="minusMileage" parameterType="lotteryuser">
+      update lottery_user
+      set mileage = MILEAGE - #{mileage}
+      where user_id = #{userId}
+   </update>
+   <select id="getMileage" resultType="int">
+      select mileage from Lottery_user
+      where user_id = #{userId}
+   </select>
+   
+   <select id="myPage" parameterType="int" resultType="Lotteryuser">
+      select *
+      from lottery_user
+      where user_no= #{user_no}
+   </select>
+   
+   <update id="updateMember" parameterType="Lotteryuser">
+      update lottery_user
+      set user_pw = #{userPw},
+      address=#{address},
+      phone=#{phone}
+      where user_no=#{userNo}
+   </update>
+   
+   <delete id="deleteMember" parameterType="int">
+      delete from lottery_user
+      where user_no = #{userNo}
+      and mileage = 0
+   </delete>
+   <select id="searchLottery" parameterType="Lotteryuser" resultType="Lotteryuser">
+      <![CDATA[
+      select b.*
+      from (select rownum rn, c.*
+         from (select * from lottery_user u join 
+      (select * from lottery l join lottery_num n on (l.lt_no = n.lt_no)) a on (u.user_no = a.user_no) where u.user_no = #{userNo} order by a.lt_times desc) c
+         where rownum <= #{page} * 10) b
+      where b.rn > (#{page} - 1) * 10
+      ]]>
+   </select>
+   <select id="getLotteryCount" parameterType="int" resultType="int">
+      select count(*) from lottery_user u join 
+      (select * from lottery l join lottery_num n on (l.lt_no = n.lt_no)) a on (u.user_no = a.user_no) where u.user_no = #{userNo} order by 1 desc
+   </select>
+   <select id="lotteryResult" parameterType="int" resultType="Lotteryuser">
+      
+select * from win y join 
+ (select r.lt_times, o.lt_no, o.user_no, r.totsum, r.lt_fir,r.lt_sec,r.lt_thr,r.lt_four,r.lt_five,r.lt_six from lottery o join 
+       (select * from (select t.lt_no, t.lt_times, t.lt_fir,t.lt_sec,t.lt_thr,t.lt_four,t.lt_five,t.lt_six,w.win_fir, w.win_sec, w.win_thr, w.win_four, w.win_five, w.win_six,
+        decode((t.lt_fir -  w.win_fir ) * 
+                (t.lt_fir -  w.win_sec ) *
+                (t.lt_fir - w.win_thr ) *
+                (t.lt_fir - w.win_four ) *
+                (t.lt_fir - w.win_five ) *
+                (t.lt_fir - w.win_six ) , 0 , 2 , decode(t.lt_fir,w.win_bonus,1,0)) +
+        decode((t.lt_sec -  w.win_fir ) *
+                (t.lt_sec -  w.win_sec ) *
+                (t.lt_sec - w.win_thr ) *
+                (t.lt_sec - w.win_four ) *
+                (t.lt_sec - w.win_five ) *
+                (t.lt_sec - w.win_six ) , 0 , 2 , decode(t.lt_sec,w.win_bonus,1,0)) +
+        decode((t.lt_thr -  w.win_fir ) *
+                (t.lt_thr -  w.win_sec ) *
+                (t.lt_thr - w.win_thr ) *
+                (t.lt_thr - w.win_four ) *
+                (t.lt_thr - w.win_five ) *
+                (t.lt_thr - w.win_six ) , 0 , 2 , decode(t.lt_thr,w.win_bonus,1,0)) +
+        decode((t.lt_four -  w.win_fir ) *
+                (t.lt_four -  w.win_sec ) *
+                (t.lt_four - w.win_thr ) *
+                (t.lt_four - w.win_four ) *
+                (t.lt_four - w.win_five ) *
+                (t.lt_four - w.win_six ) , 0 , 2 , decode(t.lt_four,w.win_bonus,1,0)) +
+        decode((t.lt_five - w.win_fir ) *
+                (t.lt_five - w.win_sec ) *
+                (t.lt_five - w.win_thr ) *
+                (t.lt_five - w.win_four ) *
+                (t.lt_five - w.win_five ) *
+                (t.lt_five - w.win_six ) , 0 , 2 , decode(t.lt_five,w.win_bonus,1,0)) +
+        decode((t.lt_six - w.win_fir ) *
+                (t.lt_six - w.win_sec ) *
+                (t.lt_six - w.win_thr ) *
+                (t.lt_six - w.win_four ) *
+                (t.lt_six - w.win_five ) *
+                (t.lt_six - w.win_six ) , 0 , 2 , decode(t.lt_six,w.win_bonus,1,0)) totsum
+         from lottery_num t join win_num w on (t.lt_times = w.lt_times))
+        where totsum >= 6) r on (o.lt_no = r.lt_no)
+        where o.user_no = #{userNo}) u on(y.lt_times = u.lt_times)
+        
+   </select>
+   
+</mapper>
