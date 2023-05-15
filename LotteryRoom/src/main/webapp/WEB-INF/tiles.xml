@@ -6,13 +6,11 @@
 	<definition name="LotteryRoomMain" template="/WEB-INF/layout/dashboard.jsp">
 		<put-attribute name="top" value="/WEB-INF/layout/top.jsp" />
 		<put-attribute name="middle" value="/WEB-INF/layout/middle.jsp" />
-		<put-attribute name="bottom" value="/WEB-INF/layout/bottom.jsp" />
 	</definition>
 	<definition name="LotteryRoomMenu" template="/WEB-INF/layout/dashmenu.jsp">
 		<put-attribute name="top" value="/WEB-INF/layout/top.jsp" />
 		<put-attribute name="sidebar" value="/WEB-INF/layout/sidebar.jsp" />
 		<put-attribute name="middle" value="/WEB-INF/layout/middle.jsp" />
-		<put-attribute name="bottom" value="/WEB-INF/layout/bottom.jsp" />
 	</definition>		
 
 	<definition name="WILDCARD:main/*" extends="LotteryRoomMain">
