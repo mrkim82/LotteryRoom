@@ -91,7 +91,7 @@
          <input id="userId" type="text" name="userId" value="${UserId }" style="display:none">
          <div id="table-container">
          <table>
-         <tr><td><p style="display:inline-block;">선택번호 확인</p><select onclick=priceSelect(this)><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></td></tr>
+         <tr><td><p style="display:inline-block;">선택번호 확인</p><select id="selectBox" onclick=priceSelect(this)><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></td></tr>
          <tr class="number" style="border-top: solid 1px; border-color: black;" onclick=addClass(this)>
             <td><p>A 자동</p></td>
             <td><input type="text" class="btn1" id="btnA1" name="btnA1" value=""></td>
@@ -152,7 +152,7 @@
          </tr>
          <tr style="padding:0px;">
             <td id="usermilege" style="border-right:1px black solid;"></td>
-            <td id="lottoprice"><input type="text" name="price" value="" readonly  style="width:60px;border:0px "></td>
+            <td id="lottoprice"><input id="lotteryprice" type="text" name="price" value="5,000" readonly  style="width:60px;border:0px "></td>
          </tr>
       </table>
       <button id="submit" style="margin-left: 400px;" type="button" class="buybtn">구매하기</button>
@@ -162,6 +162,8 @@
    </div>
 </body>
 <script>
+var selectElement = document.getElementById('selectBox'); // 'selectBox'는 실제 <select> 요소의 id입니다.
+selectElement.value = 5;
 // 삭제한 값 안넘기기
 document.querySelector('#submit').addEventListener('click',function(){
 	
@@ -169,6 +171,18 @@ document.querySelector('#submit').addEventListener('click',function(){
 	let myself = document.querySelector('#submit');
 	let numbers = document.querySelectorAll('.number');
 	let form = document.querySelector('form');
+	
+	let ltprice = document.getElementById('lotteryprice');
+	let lp = ltprice.value;
+
+	if(parseInt(lp.replace(/,/g, "")) > ${Mileage}){
+		alert('마일리지가 부족합니다.');
+		myself.type = 'button';
+		return;
+	}else{
+		myself.type = 'submit';
+	}
+	
 	if(count == 1){
 			if(numbers[0].children[1].children[0].value ==''){
 				alert('번호를 작성하세요')
@@ -191,11 +205,9 @@ document.querySelector('#submit').addEventListener('click',function(){
 		for(let i = 0 ; i < count ; i++){
 			if(numbers[i].children[1].children[0].value ==''){
 				alert('번호를 작성하세요')
-				console.log("2222"+i);	
 				myself.type = 'button';
 				break;
 			}else{
-				console.log("1111"+i);
 				myself.type = 'submit';
 			}
 		}
@@ -267,17 +279,19 @@ document.getElementById('reset').addEventListener('click',function(){
 })
 
 //tr 클릭시 클래스 추가 
-let checkedCount=0;
-function addClass(thing){
-	 if (thing.classList.contains("checked")) {
-		 thing.classList.remove("checked");
-	        checkedCount--;
-	    } else {
-	        if (checkedCount < 1) {
-	        	thing.classList.add("checked");
-	            checkedCount++;
-	        }
-	    }
+let checkedElement = null;
+
+function addClass(thing) {
+  if (checkedElement === thing) {
+    thing.classList.remove("checked");
+    checkedElement = null;
+  } else {
+    if (checkedElement !== null) {
+      checkedElement.classList.remove("checked");
+    }
+    thing.classList.add("checked");
+    checkedElement = thing;
+  }
 }
 //select box 금액설정 
 function priceSelect(thing){

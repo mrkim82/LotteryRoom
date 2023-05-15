@@ -165,7 +165,18 @@ public class AddAutoControl implements Control {
 				service.insertAutoNum(vo5);
 			}
 		}
-		
+		LottoService service1 = new LottoServiceImpl();
+		int nextLtTimes = (int) session.getAttribute("LtTimes") + 1;
+		int ltPayNum = service1.cumulativeReward(nextLtTimes);
+		int cuReward = ltPayNum * 1000; 
+		System.out.println("1111"+session.getAttribute("CuReward"));
+		if(session.getAttribute("CuReward")!=null) {
+			System.out.println("111122222");
+			session.removeAttribute("CuReward");
+			session.setAttribute("CuReward", cuReward);
+		}else {
+			session.setAttribute("CuReward", cuReward);
+		}
 		return "buyLottery.do";
 	}
 

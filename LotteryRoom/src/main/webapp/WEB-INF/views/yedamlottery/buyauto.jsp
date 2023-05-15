@@ -130,10 +130,10 @@
          </tr>
          <tr style="padding:0px;">
             <td id="usermilege" style="border-right:1px black solid;"></td>
-            <td id="lottoprice"><input type="text" name="price" value="" readonly  style="width:60px;border:0px "> </td>
+            <td id="lottoprice"><input id="lotteryprice" type="text" name="price" value="0원" readonly  style="width:60px;border:0px "> </td>
          </tr>
       </table>
-      <button style="margin-left: 400px;" type="submit" class="buybtn" >구매하기</button>
+      <button id="submit" style="margin-left: 400px;" type="submit" class="buybtn" >구매하기</button>
       </form>
    </div>
    </div>
@@ -144,6 +144,77 @@ let usermilege = document.getElementById('usermilege');
 var milege = ${Mileage }
 document.getElementById("usermilege").innerHTML = milege.toFixed().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",") + "원";
 
+document.querySelector('#submit').addEventListener('click',function(){
+	let countbtn = document.getElementById('btn0');
+	let count = countbtn.parentElement.children[1].value;
+	let myself = document.querySelector('#submit');
+	let check = document.querySelectorAll('.check');
+	let form = document.querySelector('form');
+	
+	let ltprice = document.getElementById('lotteryprice');
+	let lp = ltprice.value;
+
+	if(parseInt(lp.replace(/,/g, "")) > ${Mileage}){
+		alert('마일리지가 부족합니다.');
+		myself.type = 'button';
+		return;
+	}else{
+		myself.type = 'submit';
+	}
+	
+	if(count == 1){
+			if(check[0].children[1].children[0].value ==''){
+				alert('번호를 작성하세요')
+			}else{
+				myself.type = 'submit';
+			}
+	}
+	if(count == 2 ){
+		for(let i = 0 ; i < count ; i++){
+			if(check[i].children[1].children[0].value ==''){
+				alert('번호를 작성하세요')
+				myself.type = 'button';
+				break;
+			}else{
+				myself.type = 'submit';
+			}
+		}
+	}
+	if(count == 3 ){
+		for(let i = 0 ; i < count ; i++){
+			if(check[i].children[1].children[0].value ==''){
+				alert('번호를 작성하세요')
+				myself.type = 'button';
+				break;
+			}else{
+				myself.type = 'submit';
+			}
+		}
+	}
+	if(count == 4 ){
+		for(let i = 0 ; i < count ; i++){
+			if(check[i].children[1].children[0].value ==''){
+				alert('번호를 작성하세요')
+				myself.type = 'button';
+				break;
+			}else{
+				myself.type = 'submit';
+			}
+		}
+	}
+	if(count == 5 ){
+		for(let i = 0 ; i < count ; i++){
+			if(check[i].children[1].children[0].value ==''){
+				alert('번호를 작성하세요')
+				myself.type = 'button';
+				break;
+			}else{
+				myself.type = 'submit';
+			}
+		}
+	}
+})
+   
 function random(){
    
    let countbtn = document.getElementById('btn0');

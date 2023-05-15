@@ -74,4 +74,19 @@ public class LotteryUserServiceImpl implements LotteryUserService{
    public List<LotteryUserVO> lotteryResult(int userNo) {
       return mapper.lotteryResult(userNo);
    }
+   
+   @Override
+	public List<LotteryUserVO> getUserId() {
+		return mapper.getUserId();
+	}
+   
+   @Override
+	public String forgetUserId(LotteryUserVO vo) {
+		return mapper.forgetUserId(vo);
+	}
+   
+   @Override
+	public String forgetUserPw(String userId) {
+		return mapper.forgetUserPw(userId);
+	}
 }

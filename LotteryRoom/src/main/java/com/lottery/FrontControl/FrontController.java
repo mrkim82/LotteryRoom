@@ -20,6 +20,9 @@ import com.lottery.lotteryuser.control.BuyAutoControl;
 import com.lottery.lotteryuser.control.BuyLotteryControl;
 import com.lottery.lotteryuser.control.BuyManualControl;
 import com.lottery.lotteryuser.control.DeleteMemberControl;
+import com.lottery.lotteryuser.control.FeedControl;
+import com.lottery.lotteryuser.control.ForgetIdControl;
+import com.lottery.lotteryuser.control.ForgetPwControl;
 import com.lottery.lotteryuser.control.IntroduceLotteryControl;
 import com.lottery.lotteryuser.control.KakaoLoginControl;
 import com.lottery.lotteryuser.control.LoginControl;
@@ -99,6 +102,9 @@ public class FrontController extends HttpServlet {
 		
 		// 회원가입
 		map.put("/membership.do", new MembershipControl()); // 회원가입 기능
+		map.put("/feed.do", new FeedControl()); // 아이디 중복 체크
+		map.put("/forgetId.do", new ForgetIdControl()); // 아이디 찾기
+		map.put("/forgetPw.do", new ForgetPwControl()); // 비밀번호 찾기
 		
 		//예담복권
 		map.put("/introduce.do", new IntroduceLotteryControl()); //예담복권 소개.

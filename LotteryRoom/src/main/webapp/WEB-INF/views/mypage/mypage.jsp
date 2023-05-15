@@ -83,10 +83,6 @@ color : black;
 	margin-right: 20px;
 }
 </style>
-	
-	
-	
-	
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -104,17 +100,14 @@ color : black;
     <td>아이디</td>
     <td>${UserId}</td>
   </tr>
-  
   <tr class="tr">
     <td>연락처</td>
     <td>${Phone}</td>
   </tr>
-  
-    <tr class="tr">
+  <tr class="tr">
     <td>주소</td>
     <td>${Address}</td>
   </tr>
-  
    <tr class="tr">
     <td>회원등급</td>
       <c:choose>

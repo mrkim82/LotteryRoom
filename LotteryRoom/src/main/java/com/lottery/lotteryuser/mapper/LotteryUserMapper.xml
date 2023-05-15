@@ -7,6 +7,9 @@
       select * from lottery_user where
       user_id=#{userId} and user_pw=#{userPw}
    </select>
+   <select id="getUserId" resultType="lotteryuser">
+   	  select user_id from lottery_user
+   </select>
    <select id="getUserInfo" parameterType="String" resultType="lotteryuser">
       select * from lottery_user where
       user_id=#{userId}
@@ -34,13 +37,13 @@
       where user_id = #{userId}
    </select>
    
-   <select id="myPage" parameterType="int" resultType="Lotteryuser">
+   <select id="myPage" parameterType="int" resultType="lotteryuser">
       select *
       from lottery_user
       where user_no= #{user_no}
    </select>
    
-   <update id="updateMember" parameterType="Lotteryuser">
+   <update id="updateMember" parameterType="lotteryuser">
       update lottery_user
       set user_pw = #{userPw},
       address=#{address},
@@ -53,7 +56,7 @@
       where user_no = #{userNo}
       and mileage = 0
    </delete>
-   <select id="searchLottery" parameterType="Lotteryuser" resultType="Lotteryuser">
+   <select id="searchLottery" parameterType="lotteryuser" resultType="lotteryuser">
       <![CDATA[
       select b.*
       from (select rownum rn, c.*
@@ -67,7 +70,7 @@
       select count(*) from lottery_user u join 
       (select * from lottery l join lottery_num n on (l.lt_no = n.lt_no)) a on (u.user_no = a.user_no) where u.user_no = #{userNo} order by 1 desc
    </select>
-   <select id="lotteryResult" parameterType="int" resultType="Lotteryuser">
+   <select id="lotteryResult" parameterType="int" resultType="lotteryuser">
       
 select * from win y join 
  (select r.lt_times, o.lt_no, o.user_no, r.totsum, r.lt_fir,r.lt_sec,r.lt_thr,r.lt_four,r.lt_five,r.lt_six from lottery o join 
@@ -111,7 +114,11 @@ select * from win y join
          from lottery_num t join win_num w on (t.lt_times = w.lt_times))
         where totsum >= 6) r on (o.lt_no = r.lt_no)
         where o.user_no = #{userNo}) u on(y.lt_times = u.lt_times)
-        
    </select>
-   
+   <select id="forgetUserId" parameterType="lotteryuser" resultType="String">
+   	select user_id from lottery_user where user_name = #{userName} and phone = #{phone}
+   </select>
+   <select id="forgetUserPw" parameterType="String" resultType="String">
+   	select user_pw from lottery_user where user_id = #{userId}
+   </select>
 </mapper>

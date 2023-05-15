@@ -223,15 +223,35 @@
 	document.getElementById("num4").innerHTML = num.toFixed().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
 	
 	var calculatedValue = ${Info[0].winPrice / Info[0].winNum};
-	document.getElementById("result0").innerHTML = calculatedValue.toFixed().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",") + "원";
+	if(document.getElementById("num0").innerHTML == 0){
+		document.getElementById("result0").innerHTML = '0원';
+	}else{
+		document.getElementById("result0").innerHTML = calculatedValue.toFixed().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",") + "원";
+	}
 	calculatedValue = ${Info[1].winPrice / Info[1].winNum};
-	document.getElementById("result1").innerHTML = calculatedValue.toFixed().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",") + "원";
+	if(document.getElementById("num1").innerHTML == 0){
+		document.getElementById("result1").innerHTML = '0원';
+	}else{
+		document.getElementById("result1").innerHTML = calculatedValue.toFixed().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",") + "원";
+	}
 	calculatedValue = ${Info[2].winPrice / Info[2].winNum};
-	document.getElementById("result2").innerHTML = calculatedValue.toFixed().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",") + "원";
+	if(document.getElementById("num2").innerHTML == 0){
+		document.getElementById("result2").innerHTML = '0원';
+	}else{
+		document.getElementById("result2").innerHTML = calculatedValue.toFixed().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",") + "원";
+	}
 	calculatedValue = ${Info[3].winPrice / Info[3].winNum};
-	document.getElementById("result3").innerHTML = calculatedValue.toFixed().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",") + "원";
+	if(document.getElementById("num3").innerHTML == 0){
+		document.getElementById("result3").innerHTML = '0원';
+	}else{
+		document.getElementById("result3").innerHTML = calculatedValue.toFixed().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",") + "원";
+	}
 	calculatedValue = ${Info[4].winPrice / Info[4].winNum};
-	document.getElementById("result4").innerHTML = calculatedValue.toFixed().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",") + "원";
+	if(document.getElementById("num4").innerHTML == 0){
+		document.getElementById("result4").innerHTML = '0원';
+	}else{
+		document.getElementById("result4").innerHTML = calculatedValue.toFixed().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",") + "원";
+	}
 	
 	const btn1 = document.getElementById('btn1');
 	const btn2 = document.getElementById('btn2');

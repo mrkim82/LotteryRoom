@@ -24,7 +24,7 @@ fieldset {
 	padding-bottom: 10px;
 }
 .bolda{
-	width: 244px; 
+	width: 300px; 
 	height: 240px;
 	
 	font-weight: bold;
@@ -98,7 +98,7 @@ li span{
 
 </style>
 <tr>
-	<td style="width: 1000px; height: 200px;">
+	<td colspan="2" style="width: 1000px; height: 200px;">
 	<fieldset class="bold">
 	<div>
 	<table>
@@ -145,8 +145,8 @@ li span{
 						<button type="submit" class="login">Lottery Room Login</button>
 					</fieldset>
 					<fieldset>
-						<a class="idpw" href="#">아이디 찾기</a><a class="idpw"> / </a><a
-							class="idpw" href="#">비밀번호 찾기</a><a class="idpw"> / </a><a
+						<a class="idpw" href="forgetId.do">아이디 찾기</a><a class="idpw"> / </a><a
+							class="idpw" href="forgetPw.do">비밀번호 찾기</a><a class="idpw"> / </a><a
 							class="idpw" href="membership.do">회원가입</a>
 						<a href="javascript:kakaoLogin();"><img src="https://www.gb.go.kr/Main/Images/ko/member/certi_kakao_login.png" style="margin-top:10px;height:40px;width:auto;"></a>
 					</fieldset>
@@ -157,9 +157,17 @@ li span{
 					<fieldset>
 						<p style="margin-top: 40px;">${UserName }님 </p>
 					</fieldset>
+					<fieldset style="margin-bottom:10px;">
+						<p>보유 마일리지 : <span id="mymileage"></span>원</p>
+						<a class="idpw" href="plusMileage.do?userId=${UserId }" >마일리지 충전ㆍ출금</a>
+						<script>
+							var mile = ${Mileage };
+							document.getElementById("mymileage").innerHTML = mile.toFixed().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+						</script>
+					</fieldset>
 					<fieldset>
 						<a class="idpw" href="logout.do">로그아웃</a><a class="idpw"> / </a><a
-							class="idpw" href="#">회원정보 변경</a>
+							class="idpw" href="updatemember.do">회원정보 변경</a>
 					</fieldset>
 				</form>
 			</c:otherwise>
@@ -167,7 +175,7 @@ li span{
 </tr>
 
 <tr>
-	<td style="width: 250px; height: 500px;">
+	<td style="width: 300px; height: 500px;">
 	<fieldset class="bolda" style="height: 490px;">
 	<div class="part2" style="float: left;">
 		<h4>실시간 예상 당첨금</h4>
@@ -179,32 +187,32 @@ li span{
 		</table>
 		<table class="part2">
 			<tr>
-				<td class="textleft">2등</td>
+				<td class="textleft">2등 </td>
 				<td id="secWn"></td>
 			</tr>
 		</table >
 		<table class="part2">
 			<tr>
-				<td class="textleft">3등</td>
+				<td class="textleft">3등 </td>
 				<td id="thrWn"></td>
 			</tr>
 		</table>
 		<table class="part2">
 			<tr>
-				<td class="textleft">4등</td>
+				<td class="textleft">4등 </td>
 				<td id="fourWn"></td>
 			</tr>
 		</table>
 		<table class="part2">
 			<tr>
-				<td class="textleft">5등</td>
-				<td id="fifWn"></td>
+				<td class="textleft">5등 </td>
+				<td>\</td><td id="fifWn"></td>
 			</tr>
 		</table>
 	</div>
 	</fieldset>
 	</td>
-	<td style="width: 1000px; height: 500px;">
+	<td colspan="2" style="width: 1000px; height: 500px;">
 	<fieldset class="bold" style="height: 490px;">
 	<iframe style="width: 100%; height: 100%;" src="mainBoard.do?mbGrade=E"></iframe>
 	</fieldset>
@@ -286,7 +294,7 @@ document.getElementById("fifWn").innerHTML = fifWn;
         	 let xhtp = new XMLHttpRequest();
              xhtp.open('post', 'addLotto.do');
              xhtp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-             xhtp.send('cumulativeAmount=' + 1234817000);
+             xhtp.send('cumulativeAmount=${CuReward}');
          	 xhtp.onload = function () {
              let result = JSON.parse(xhtp.response);
              if (result.retCode == 'Success') {
