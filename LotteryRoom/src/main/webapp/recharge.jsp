@@ -19,8 +19,8 @@
 	  // 결제 정보 파라미터
 	  amount: payment,
 	  orderId: 'YDXLHxUEprRxokshgHDj0',
-	  orderName: '토스 티셔츠 외 2건',
-	  customerName: '박토스',
+	  orderName: '충전하기',
+	  customerName: '회원님',
 	  successUrl: 'http://localhost:8081/com.lottery/plusMileage.do?userId=${UserId}&payment='+payment,
 	  failUrl: 'http://localhost:8081/fail',
 	  validHours: 24,

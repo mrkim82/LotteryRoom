@@ -6,6 +6,10 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
+table{
+ color: transparent;
+ text-shadow: 0 0 0 black;
+ }
 .image{
    align-items: center;
    float: left;
@@ -53,7 +57,8 @@
 </style>
 </head>
 <body>
-   <p>자동복권구매</p>
+ 	<h2><strong>자동복권구매</strong></h2>
+ 	<hr>
    <div class="image">
       <div class="lottery-container">
          <div style="width:300px" >

@@ -3,16 +3,52 @@
 <!DOCTYPE html>
 <html>
 <style>
-#searchBtn {
-	padding: 10px 20px;
+.market {
+	font-weight : bold;
+	color: green;
+}
+.address{
+	font-weight: bold;
+}
+.buttonPosition{
 	font-size: 16px;
-	margin-right: 363px;
+    color: #007BFF;
+    background-color: white;
+    border: 2px solid #007BFF;
+    cursor: pointer;
+    text-align: center;
+    display: inline-block;
+    transition-duration: 0.4s;
+}
+.buttonPosition:hover{
+	color:white;
+	background-color: #007BFF;
+}
+/* Outlined Button */
+.outlinedButton {
+    font-size: 16px;
+    padding: 10px 20px;
+    color: #007BFF;
+    background-color: white;
+    border: 2px solid #007BFF;
+    cursor: pointer;
+    text-align: center;
+    display: inline-block;
+    transition-duration: 0.4s;
+    margin-right: 10px;
 }
 
-#Select {
-	padding: 10px 20px;
-	font-size: 16px;
+.outlinedButton:hover {
+    color: white;
+    background-color: #007BFF;
 }
+
+.Select {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #0066ff;
+}
+
 
 .button-container {
 	display: flex;
@@ -51,9 +87,9 @@ h1 {
 
 .data-item .image-container {
 	width: 100%;
-	height: 150px; /* 이미지 컨테이너 높이 조정 */
+	
 	margin-bottom: 10px;
-	overflow: hidden;
+
 }
 
 .data-item img {
@@ -71,8 +107,9 @@ h1 {
 }
 
 #images {
-	width: 225px;
-	height: 150px;
+	width: 300px;
+	height: 300px;
+	display:block;
 }
 
 .pagination-container {
@@ -83,7 +120,51 @@ h1 {
 
 .pagination-container button {
 	margin: 0 5px;
+	font-size: 16px;
+    padding: 12px 24px;
+    color: white;
+    background-color: #00b359;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    display: inline-block;
+    transition: all 0.3s ease-out;
+    position: relative;
+    overflow: hidden;
+    border-radius: 4px;
 }
+.pagination-container button:hover {
+    background-color: #0056b3;
+}
+.pagination-container button:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #007BFF;
+    border-radius: 4px;
+    z-index: 1;
+    transition: all 0.3s ease-in-out;
+    transform: scale(0);
+    transform-origin: center;
+}
+.pagination-container button:before {
+    z-index: 2;
+    position: relative;
+}
+.pagination-container button:active:after{
+	transform: scale(1);
+}
+.h2c {
+	display:inline-block;
+}
+.sung {
+	width: 50px;
+	height:50px;
+	display:inline-block;
+}
+
 </style>
 <head>
 <meta charset="UTF-8">
@@ -91,9 +172,10 @@ h1 {
 </head>
 
 <body>
-	<p>복권 판매점 위치 조회</p>
+	<img src="./images/현용이형.png" class="sung"><h2 class="h2c"><strong>복권 판매점 위치 조회</strong></h2><img src="./images/성현이.png" class="sung">
+	<hr>
 	<div class="button-container">
-		<select id="Select">
+		<select class="Select" id="Select">
 			<option value="">전체보기</option>
 			<option value="서울">서울</option>
 			<option value="경기">경기</option>
@@ -108,7 +190,7 @@ h1 {
 			<option value="울산">울산</option>
 			<option value="부산">부산</option>
 		</select>
-		<button id="searchBtn">조회</button>
+	<button id="searchBtn" class="outlinedButton">조회</button>
 	</div>
 	<div id="data-container"></div>
 	<div class="pagination-container"></div>
@@ -149,20 +231,23 @@ h1 {
 		
 		      let image = document.createElement('img');
 		      image.id = 'images';
-		      image.src = './images/루이방.jpg';
+		      image.src = './images/복권방로고.png';
 		      image.alt = '이미지';
 		      imageContainer.appendChild(image);
 		      item.appendChild(imageContainer);
 		
 		      let name = document.createElement('div');
+		      name.classList.add('market')
 		      name.innerText = centerData.상호;
 		      item.appendChild(name);
 		
 		      let location = document.createElement('div');
+		      location.classList.add('address')
 		      location.innerText = centerData.지번주소;
 		      item.appendChild(location);
 		
 		      let button = document.createElement('button');
+		      button.classList.add('buttonPosition')
 		      button.innerText = '위치찾기';
 		      button.addEventListener('click', function () {
 		        let encodedAddress = encodeURIComponent(centerData.지번주소);
