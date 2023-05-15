@@ -24,9 +24,8 @@ fieldset {
 	border: .10rem solid #e5e5e5;
 	padding-bottom: 10px;
 }
-
-.bolda {
-	width: 300px;
+.bolda{
+	width: 300px; 
 	height: 240px;
 	font-weight: bold;
 	background-color: #ffffff;
@@ -171,8 +170,8 @@ li span {
 						<button type="submit" class="login">Lottery Room Login</button>
 					</fieldset>
 					<fieldset>
-						<a class="idpw" href="#">아이디 찾기</a><a class="idpw"> / </a><a
-							class="idpw" href="#">비밀번호 찾기</a><a class="idpw"> / </a><a
+						<a class="idpw" href="forgetId.do">아이디 찾기</a><a class="idpw"> / </a><a
+							class="idpw" href="forgetPw.do">비밀번호 찾기</a><a class="idpw"> / </a><a
 							class="idpw" href="membership.do">회원가입</a> <a
 							href="javascript:kakaoLogin();"><img
 							src="https://www.gb.go.kr/Main/Images/ko/member/certi_kakao_login.png"
@@ -185,6 +184,14 @@ li span {
 					<fieldset>
 						<p style="margin-top: 40px;">${UserName }님</p>
 					</fieldset>
+					<fieldset style="margin-bottom:10px;">
+						<p>보유 마일리지 : <span id="mymileage"></span>원</p>
+						<a class="idpw" href="plusMileage.do?userId=${UserId }" >마일리지 충전ㆍ출금</a>
+						<script>
+							var mile = ${Mileage };
+							document.getElementById("mymileage").innerHTML = mile.toFixed().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+						</script>
+					</fieldset>
 					<fieldset>
 						<a class="idpw" href="logout.do">로그아웃</a><a class="idpw"> / </a><a
 							class="idpw" href="updatemember.do">회원정보 변경</a>
@@ -195,6 +202,7 @@ li span {
 </tr>
 
 <tr>
+
 	<td style="width: 300px; height: 500px;">
 		<fieldset class="bolda" style="height: 490px;">
 			<div class="part2" style="float: left; text-align: center;">

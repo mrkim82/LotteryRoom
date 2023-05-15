@@ -20,4 +20,7 @@ public interface LotteryUserMapper {
    public List<LotteryUserVO> searchLottery(LotteryUserVO vo);
    public int getLotteryCount(int userNo); 
    public List<LotteryUserVO> lotteryResult(int userNo);
+   public List<LotteryUserVO> getUserId();
+   public String forgetUserId(LotteryUserVO vo);
+   public String forgetUserPw(String userId);
 }

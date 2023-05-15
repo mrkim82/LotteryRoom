@@ -48,7 +48,71 @@ body {
 			<div class="input-form col-md-12 mx-auto">
 				<h4 class="mb-3">회원가입</h4>
 				<form class="validation-form" action="membership.do" method="post" novalidate>
-						<div class="mb-3" style="width:320px;">
+					<c:choose>
+					<c:when test="${VOInfo.userId != null}">
+					<div class="mb-3">
+						<label for="email">아이디(이메일)</label> <input type="email" name="userId"
+							class="form-control" id="email" value="${VOInfo.userId }" readonly>
+					</div>
+					</c:when>
+					<c:otherwise>
+					<div class="mb-3">
+					<c:choose>
+					<c:when test="${Idfeed.userId == null }">
+						<label for="email">아이디(이메일)</label> <input type="email" name="userId"
+							class="form-control" id="emailid" placeholder="you@example.com"
+							required>
+							  <button type="button" onclick="redirectToFeed()">중복확인</button>
+					        <script>
+					            function redirectToFeed() {
+					                var inputElement = document.getElementById("emailid");
+					                var inputUserId = inputElement.value;
+					
+					                if (inputUserId.trim() !== '') {
+					                    var encodedUserId = encodeURIComponent(inputUserId);
+					                    var url = 'feed.do?userId=' + encodedUserId;
+					                    window.location.href = url;
+					                }
+					            }
+					        </script>
+							</c:when>
+							<c:otherwise>
+							<label for="email">아이디(이메일)</label> <input type="email" name="userId"
+							class="form-control" id="emailid" placeholder="you@example.com"
+							value="${Idfeed.userId}" required>
+							<button type="button" onclick="redirectToFeed()">중복확인</button>
+							<script>
+				            function redirectToFeed() {
+				                var inputElement = document.getElementById("emailid");
+				                var inputUserId = inputElement.value;
+				
+				                if (inputUserId.trim() !== '') {
+				                    var encodedUserId = encodeURIComponent(inputUserId);
+				                    var url = 'feed.do?userId=' + encodedUserId;
+				                    window.location.href = url;
+				                }
+				            }
+				            var idFeed = '${Idfeed.userId}'; // Idfeed 속성에서 userId 값을 가져옴
+				            
+				            if (idFeed == '') {
+				                alert('이미 사용 중인 아이디입니다.');
+				            } else{
+				            	alert('사용 가능한 아이디입니다.');
+				            }
+				            
+				      		</script>
+							</c:otherwise>
+							</c:choose>
+					</div>
+					</c:otherwise>
+					</c:choose>
+					<div class="mb-3">
+						<label for="email">비밀번호</label> <input type="password" minlength="8" maxlength="12"
+							class="form-control" id="password" name="userPw" placeholder="비밀번호 8-15자리 입력"
+							required>
+						<div class="invalid-feedback" >비밀번호 8-15자리 입력해주세요.</div>
+					</div>
+					<div class="mb-3" style="width:320px;">
 							<label for="name">이름</label> <input type="text"
 								class="form-control" id="name" name="userName" placeholder="" value="" required>
 							<div class="invalid-feedback">이름을 입력해주세요.</div>
@@ -61,37 +125,15 @@ body {
 					<div class="mb-3" style="margin-top: -20px;">
 						<label class="form-label mt-4">생년월일</label>
 						<div class="bir_inline">
-							<span class="ps_box"> <input style="width:200px; margin-right:20px;" type="text"
-								class="form-control" id="yy" name="birthYear" placeholder="년(4자)" maxlength="4">
-							</span> <span class="ps_box"> <input style="width:160px; margin-right:20px;" type="text"
-								class="form-control" id="mm" name="birthMonth" placeholder="월" maxlength="2">
-							</span> <span class="ps_box"> <input style="width:160px; margin-right:20px;" type="text"
-								class="form-control" id="dd" name="birthDay" placeholder="일" maxlength="2">
+							<span class="ps_box"> <input style="width:200px; margin-right:20px;" type="number"
+								class="form-control" id="yy" name="birthYear" placeholder="년(4자)" max="2004" maxlength="4">
+							</span> <span class="ps_box"> <input style="width:160px; margin-right:20px;" type="number"
+								class="form-control" id="mm" name="birthMonth" placeholder="월" max="12" maxlength="2">
+							</span> <span class="ps_box"> <input style="width:160px; margin-right:20px;" type="number"
+								class="form-control" id="dd" name="birthDay" placeholder="일" max="31" maxlength="2">
 							</span>
 						</div>
 					</div>
-					<c:choose>
-					<c:when test="${VOInfo.userId != null}">
-					<div class="mb-3">
-						<label for="email">아이디(이메일)</label> <input type="email" name="userId"
-							class="form-control" id="email" value="${VOInfo.userId }" readonly>
-					</div>
-					</c:when>
-					<c:otherwise>
-					<div class="mb-3">
-						<label for="email">아이디(이메일)</label> <input type="email" name="userId"
-							class="form-control" id="email" placeholder="you@example.com"
-							required>
-					</div>
-					</c:otherwise>
-					</c:choose>
-					<div class="mb-3">
-						<label for="email">비밀번호</label> <input type="password" minlength="8" maxlength="12"
-							class="form-control" id="password" name="userPw" placeholder="비밀번호 8-15자리 입력"
-							required>
-						<div class="invalid-feedback" >비밀번호 8-15자리 입력해주세요.</div>
-					</div>
-					
 					<div class="mb-3">
 						<label for="address">주소</label> <input type="text"
 							class="form-control" id="address" name="address1" placeholder="서울특별시 강남구"
@@ -99,8 +141,7 @@ body {
 						<div class="invalid-feedback">주소를 입력해주세요.</div>
 					</div>
 					<div class="mb-3">
-						<label for="address2">상세주소<span class="text-muted">&nbsp;(필수
-								아님)</span></label> <input type="text" class="form-control" id="address2"  name="address2"
+						<label for="address2">상세주소<span class="text-muted">&nbsp;(필수아님)</span></label> <input type="text" class="form-control" id="address2"  name="address2"
 							placeholder="상세주소를 입력해주세요.">
 					</div>
 					

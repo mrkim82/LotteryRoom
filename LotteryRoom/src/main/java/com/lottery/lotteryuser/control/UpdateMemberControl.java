@@ -18,7 +18,8 @@ public class UpdateMemberControl implements Control {
 	public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 								
 	    if (req.getMethod().equals("GET")) {
-	    	String userNo = req.getParameter("userNo");
+	    	HttpSession session = req.getSession();
+	    	String userNo = String.valueOf(session.getAttribute("UserNo"));
 	    	
 	    	LotteryUserService service = new LotteryUserServiceImpl();
 	    	LotteryUserVO vo = service.myPage(Integer.parseInt(userNo));

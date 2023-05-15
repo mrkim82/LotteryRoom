@@ -81,7 +81,6 @@
 		select count(*) from lottery_num where lt_times = #{ltTimes}
 	</select>
 	
-	
 	<!-- 김욱환 -->
 	<insert id="insertAutoLottery" parameterType="lotto">
 		insert into lottery values

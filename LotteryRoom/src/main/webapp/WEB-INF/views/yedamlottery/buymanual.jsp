@@ -183,7 +183,7 @@ right: 450px;
          </tr>
          <tr style="padding:0px;">
             <td id="usermilege" style="border-right:1px black solid;"></td>
-            <td id="lottoprice"><input type="text" name="price" value="5,000" readonly  style="width:60px;border:0px "></td>
+            <td id="lottoprice"><input id="lotteryprice" type="text" name="price" value="5,000" readonly  style="width:60px;border:0px "></td>
          </tr>
       </table>
       </div>
@@ -203,6 +203,18 @@ document.querySelector('#submit').addEventListener('click',function(){
 	let myself = document.querySelector('#submit');
 	let numbers = document.querySelectorAll('.number');
 	let form = document.querySelector('form');
+	
+	let ltprice = document.getElementById('lotteryprice');
+	let lp = ltprice.value;
+
+	if(parseInt(lp.replace(/,/g, "")) > ${Mileage}){
+		alert('마일리지가 부족합니다.');
+		myself.type = 'button';
+		return;
+	}else{
+		myself.type = 'submit';
+	}
+	
 	if(count == 1){
 			if(numbers[0].children[1].children[0].value ==''){
 				alert('번호를 작성하세요')
