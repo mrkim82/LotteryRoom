@@ -17,7 +17,7 @@ fieldset {
 
 .bold {
 	width: 994px;
-	height: 240px;
+	height: 400px;
 	font-weight: bold;
 	text-align: center;
 	background-color: #ffffff;
@@ -28,7 +28,7 @@ fieldset {
 .bolda {
 	width: 300px;
 	height: 240px;
-	text-align: center;
+	font-weight: bold;
 	background-color: #ffffff;
 	border: .10rem solid #e5e5e5;
 	padding-bottom: 10px;
@@ -106,18 +106,31 @@ li span {
 	pointer-events: none;
 	font-weight: bold;
 }
-</style>
 
+.timerSqure {
+	width: 50px;
+	height: 50px;
+	background-color: black;
+	display: inline-block;
+	margin: 5px;
+}
+
+.part2{
+	text-align: center;
+}
+</style>
 <tr>
-	<td style="width: 1000px; height: 200px;">
+	<td colspan="2" style="width: 1000px; height: 400px;">
 		<fieldset class="bold">
 			<div>
 				<table style="width: 997px;">
 					<tr>
-						<td style="font-size: 25px;"><b id="ltTimes1"></b><b>회</b> 당첨결과 
+						<td style="font-size: 25px; padding-top: 40px;"><b
+							id="ltTimes1"></b><b>회 </b>당첨결과</td>
 					</tr>
 					<tr>
-						<td>(<span id="winDate"></span>)추첨</td>
+						<td>(<span id="winDate"></span>)추첨
+						</td>
 					</tr>
 					<tr>
 						<td><button class="btn" id="btn1"></button>
@@ -125,11 +138,14 @@ li span {
 							<button class="btn" id="btn3"></button>
 							<button class="btn" id="btn4"></button>
 							<button class="btn" id="btn5"></button>
-							<button class="btn" id="btn6"></button> <span style="font-size: 40px; position: relative; top: 8px;"> + </span>
+							<button class="btn" id="btn6"></button> <span
+							style="font-size: 40px; position: relative; top: 8px;"> +
+						</span>
 							<button class="btn" id="btn7"></button></td>
 					</tr>
 					<tr>
-						<td><b id="ltTimes2"></b>회차 당첨금액 <b class="cumulativeAmount" style="font-size: 20px; color: brown;"></b>원</td>
+						<td><b id="ltTimes2"></b>회차 당첨금액 <b class="cumulativeAmount"
+							style="font-size: 20px; color: brown;"></b>원</td>
 					</tr>
 				</table>
 			</div>
@@ -149,7 +165,7 @@ li span {
 	</td>
 	<td><c:choose>
 			<c:when test="${UserId == null }">
-				<form action="login.do" method="get" style="height: 240px;">
+				<form action="login.do" method="get" style="height: 400px;">
 					<fieldset>
 						<legend>가즈아 복권방</legend>
 						<button type="submit" class="login">Lottery Room Login</button>
@@ -171,7 +187,7 @@ li span {
 					</fieldset>
 					<fieldset>
 						<a class="idpw" href="logout.do">로그아웃</a><a class="idpw"> / </a><a
-							class="idpw" href="#">회원정보 변경</a>
+							class="idpw" href="updatemember.do">회원정보 변경</a>
 					</fieldset>
 				</form>
 			</c:otherwise>
@@ -179,48 +195,47 @@ li span {
 </tr>
 
 <tr>
-	<td style="width: 1000px; height: 500px;">
-		<fieldset class="bold" style="height: 490px;">
-			<iframe style="width: 100%; height: 100%;"
-				src="mainBoard.do?mbGrade=E"></iframe>
-		</fieldset>
-	</td>
-
-	<td style="width: 200px; height: 500px;">
+	<td style="width: 300px; height: 500px;">
 		<fieldset class="bolda" style="height: 490px;">
-			<div class="part2" style="float: left;">
+			<div class="part2" style="float: left; text-align: center;">
 				<h4>실시간 예상 당첨금</h4>
 				<table class="part2" style="margin-top: 20px;">
 					<tr>
-						<td class="textleft" style="color: firebrick;">1등</td>
+						<td class="text" style="color: firebrick;">1등</td>
 						<td id="firWn" style="color: firebrick;"></td>
 					</tr>
 				</table>
 				<table class="part2">
 					<tr>
-						<td class="textleft">2등</td>
+						<td class="text">2등</td>
 						<td id="secWn"></td>
 					</tr>
 				</table>
 				<table class="part2">
 					<tr>
-						<td class="textleft">3등</td>
+						<td class="text">3등</td>
 						<td id="thrWn"></td>
 					</tr>
 				</table>
 				<table class="part2">
 					<tr>
-						<td class="textleft">4등</td>
+						<td class="text">4등</td>
 						<td id="fourWn"></td>
 					</tr>
 				</table>
 				<table class="part2">
 					<tr>
-						<td class="textleft">5등</td>
+						<td class="text">5등</td>
 						<td id="fifWn"></td>
 					</tr>
 				</table>
 			</div>
+		</fieldset>
+	</td>
+	<td colspan="2" style="width: 1000px; height: 500px;">
+		<fieldset class="bold" style="height: 490px;">
+			<iframe style="width: 100%; height: 100%;"
+				src="mainBoard.do?mbGrade=E"></iframe>
 		</fieldset>
 	</td>
 </tr>
@@ -364,8 +379,8 @@ document.getElementById("fifWn").innerHTML = fifWn;
 
 		let winDate = document.getElementById('winDate');
 		winDate.innerText = ltInfo.ltInfo.winDate;
- 		
- 		let originalDate = winDate.innerText;
+		
+		let originalDate = winDate.innerText;
  		let formattedDate = new Date(originalDate).toISOString().split('T')[0];
  		winDate.innerText = formattedDate;
 		
