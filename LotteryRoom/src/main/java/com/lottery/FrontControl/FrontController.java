@@ -55,7 +55,7 @@ import com.lottery.store.control.StoreSearchControl;
 
 
 public class FrontController extends HttpServlet {
-
+	//이쿠조 화이팅
 	private Map<String, Control> map;
 	String encoding;
 
