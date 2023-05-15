@@ -2,6 +2,9 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <style>
+.listButton{
+	
+}
 .mi{
 display: none;
 }
@@ -126,7 +129,7 @@ input[type="text"], textarea {
 		</c:when>
 		</c:choose>
 		<!-- 전체 리스트페이지 이동 시 페이징 한 값이 필요 -->
-		<td><button type="button" 
+		<td><button type="button" class="listButton"
 		onclick="location.href='listCS.do?cbGrade=${VOInfo.cbGrade}&page=${pageNum}'">목록</button></td>
 		</tr>
 	</table>
@@ -163,7 +166,7 @@ input[type="text"], textarea {
 
 <!-- 댓글등록. -->
 <div id="content">
-	<input type="text" id="reply"> <span>${UserNo }</span>
+	<input type="text" id="reply"> <span style="display:none;">${UserNo }</span>
 	<button type="button" id="addBtn">댓글등록</button>
 </div>
 
