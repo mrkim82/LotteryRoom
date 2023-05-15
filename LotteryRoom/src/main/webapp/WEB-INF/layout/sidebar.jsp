@@ -37,17 +37,17 @@
 		
 	</div>
 
-	<div class="list-group list-group-flush" style="display:none;" id=StoreSide>
+	<div class="list-group list-group-flush" style="display:none; width: 160px;" id=StoreSide>
 		<a class="list-group-item list-group-item-action list-group-item-light p-3" href="storelist.do">전국 판매점</a>
 		<a class="list-group-item list-group-item-action list-group-item-light p-3" href="storesearch.do">근처 판매점</a>
 	</div>
 
-	<div class="list-group list-group-flush" style="display:none;" id=ResultSide>
+	<div class="list-group list-group-flush" style="display:none; width: 160px;" id=ResultSide>
 		<a class="list-group-item list-group-item-action list-group-item-light p-3" href="listLotto.do">회차별 당첨내역</a>
 		<a class="list-group-item list-group-item-action list-group-item-light p-3" href="liveReward.do">실시간 당첨금</a>
 	</div>
 	
-		<div class="list-group list-group-flush" style="display:none;" id=MypageSide>
+		<div class="list-group list-group-flush" style="display:none; width: 160px;" id=MypageSide>
       <a class="list-group-item list-group-item-action list-group-item-light p-3" href="mypage.do">내 정보</a>
       <a class="list-group-item list-group-item-action list-group-item-light p-3" href="deletemember.do?userNo=${UserNo}">회원탈퇴</a>
    </div>

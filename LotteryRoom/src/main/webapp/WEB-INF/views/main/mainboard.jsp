@@ -28,28 +28,45 @@
 .boardname{
 	width:1110px;
 	font-weight:bold; 
-	font-size:30px;
+	font-size:20px;
 	padding: 0px;
 }
+
 table, th, td{
 	border: 1px solid #444444;
+	border-collapse: collapse;
 }
+
+thead{
+	border-left: none;
+}
+
 .table{
 	width:100%;	
 	height : 70%;
 	test-align : center;
+	boarer-top: 1px solid #948e8e;
 }
 .pagination a:hover:not(.active) {background-color: #ddd;}
 .ccc{
 	width:10%;
 	text-align: center;
+	border-bottom: 1px solid lightgray;
+	border-left: 1px solid lightgray;
+	border-right: 1px solid lightgray;
 }
 .cccc{
 	width:15%;
 	text-align: center;
+	border-bottom: 1px solid lightgray;
+	border-left: 1px solid lightgray;
+	border-right: 1px solid lightgray;
 }
 .ccccc{
 	width:40%;
+	border-bottom: 1px solid lightgray;
+	border-left: 1px solid lightgray;
+	border-right: 1px solid lightgray;
 }
 a{
 text-decoration: none;
@@ -69,14 +86,14 @@ color : black;
 </c:when>
 </c:choose>
 	<c:set var="no" value="${(totalcount-(pageInfo.pageNum-1) * 10) + 1 }"></c:set>
-	<form>
+	<form style="padding-top: 10px;">
 	<table class="table">
 		<thead>
 			<tr>
-				<th class="ccc">글번호</th>
-				<th class="ccc" style="display:none;">고유번호</th>	
-				<th class="ccccc">제목</th>
-				<th class="cccc">작성자</th>
+				<th class="ccc" style="border-right: 1px solid lightgray;">글번호</th>
+				<th class="cccc" style="display:none;">고유번호</th>	
+				<th class="ccccc" style="border-right: 1px solid lightgray;">제목</th>
+				<th class="cccc" style="border-right: 1px solid lightgray;">작성자</th>
 				<th class="ccc" style="display:none;">조회수</th>
 			</tr>
 		</thead>
@@ -86,16 +103,16 @@ color : black;
 					<c:out value="${no= no-1 }"></c:out>
 				</td>
 				
-				<td style="display:none;">${multi.mbId }</td>
+				<td class="ccc" style="display:none;">${multi.mbId }</td>
 				<c:choose>
 				<c:when test="${(UserGrade == 'A' || UserGrade == 'C')}">
-				<td><a href="getMulti.do?mbId=${multi.mbId }&page=${pageInfo.pageNum }" target="_top">${multi.mbTitle }</a></td>
+				<td class="ccc"><a href="getMulti.do?mbId=${multi.mbId }&page=${pageInfo.pageNum }" target="_top">${multi.mbTitle }</a></td>
 				</c:when>
 				<c:when test="${multi.mbGrade == 'K'}">
-				<td><a href="getMulti.do?mbId=${multi.mbId }&page=${pageInfo.pageNum }" target="_top">${multi.mbTitle }</a></td>
+				<td class="ccc"><a href="getMulti.do?mbId=${multi.mbId }&page=${pageInfo.pageNum }" target="_top">${multi.mbTitle }</a></td>
 				</c:when>
 				<c:otherwise>
-				<td><a href="#" onclick="alert('조회권한이 없습니다.');">${multi.mbTitle }</a></td>
+				<td class="ccc"><a href="#" onclick="alert('조회권한이 없습니다.');">${multi.mbTitle }</a></td>
 				</c:otherwise>
 				</c:choose>
 				<td class="cccc">${multi.userName }</td>

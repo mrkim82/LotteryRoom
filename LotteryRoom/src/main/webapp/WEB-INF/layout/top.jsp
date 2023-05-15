@@ -8,7 +8,7 @@
 			class="row flex-nowrap justify-content-between align-items-center">
 			<div class="col-4 pt-1"></div>
 			<div class="col-4 text-center">
-				<a class="blog-header-logo text-body-emphasis" href="main.do">Lottery
+				<a class="blog-header-logo text-body-emphasis" href="main.do" style="font-size: 40px;">Lottery
 					Room</a>
 			</div>
 			<div class="col-4 d-flex justify-content-end align-items-center">
@@ -34,12 +34,12 @@
 	</header>
 
 	<div class="nav-scroller py-1 mb-2"
-		style="border-bottom: 1px solid #e5e5e5">
-		<nav class="nav d-flex justify-content-between">
-			<a class="p-2 link-secondary" href="introduce.do">예담복권</a> <a
-				class="p-2 link-secondary" href="listLotto.do">당첨내역</a> <a
-				class="p-2 link-secondary" href="storelist.do">판매점</a> <a
-				class="p-2 link-secondary" href="listMulti.do?mbGrade=E">게시판</a>
+		style="border-bottom: 1px solid #e5e5e5;">
+		<nav class="nav d-flex justify-content-between"">
+			<a class="p-2 link-secondary" href="introduce.do" style="color: white;">예담복권</a> <a
+				class="p-2 link-secondary" href="listLotto.do" style="color: white;">당첨내역</a> <a
+				class="p-2 link-secondary" href="storelist.do" style="color: white;">판매점</a> <a
+				class="p-2 link-secondary" href="listMulti.do?mbGrade=E" style="color: white;">게시판</a>
 		</nav>
 	</div>
 </div>

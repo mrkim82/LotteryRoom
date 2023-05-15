@@ -77,6 +77,7 @@
         text-align: center;
         white-space: nowrap;
         -webkit-overflow-scrolling: touch;
+        background-color: black;
         
       }
 

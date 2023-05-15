@@ -139,7 +139,7 @@
 					<button class="btn" id="btn7">${lottoResult.winBonus}</button></td>
 				</tr>
 				<tr id="">
-					<td style="height: 30px; text-align: right; padding-right: 240px; padding-bottom: 20px;"><pre>당첨번호                        보너스</pre></td>
+					<td style="height: 30px; text-align: right; padding-right: 226px; padding-bottom: 20px;"><pre>당첨번호                        보너스</pre></td>
 				</tr>
 			</tbody>
 		</table>
