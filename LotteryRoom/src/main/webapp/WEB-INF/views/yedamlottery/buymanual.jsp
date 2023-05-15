@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
+
 .checked{
 	border:3px black solid;
 }
@@ -19,6 +20,7 @@
       transition: 0.7s;
       border-width : 1px;
       color : white;
+      text-align :center;
 }
 .btn1{
    width: 50px;
@@ -30,6 +32,7 @@
    border: 1px solid gray;
    margin: 5px;
    border-radius: 30px;
+   text-align :center;
 }
 .divLine{
    border-bottom: solid 1px black;
@@ -44,11 +47,12 @@
 }
 .btn {
     padding: 5px 10px;
-    margin: 1px;
+    margin: 0px;
     background-color: lightgray;
     border: 1px solid darkgray;
     cursor: pointer;
     border-radius: 12px;
+    
 }
 .btn-selected {
     background-color: rgb(21, 12, 81);
@@ -62,24 +66,44 @@
     justify-items: center;
     margin: 0 auto;
     width: 80%;
-    max-width: 500px;
+    max-width: 350px;
+    float: left;
+    margin-top:50px;
+    margin-right:50px;
+    position: relative;
+	left:80px;
 }
 #table-container {
-	margin-right : 250px;
+	margin-right : 150px;
 	/* width: 80%; */
+	float: right;
+	width: 500px;
+	position: relative;
+	left:80px;
+}
+#lottery-container {
+	float: right;
+}
+form {
+  display: inline-block;
+  float:right;
+  
+}
+.span1{
+	position: relative;
+	top:40px;
+}
+.image{
+position: relative;
+right: 450px;
 }
 </style>
 </head>
 <body>
-<p>수동복권구매</p>
-<div id="button-container">
-</div>
-<div style="width:200px;float:right;margin-right:200px">
-<button id="reset" style="background-color: rgb(61, 50, 182); color: white; width: 70px;display:inline-block;" type="button"  >초기화</button>
- <button id="put" style="background-color: rgb(61, 50, 182); color: white; width: 50px;display:inline-block;" type="button"  >확인</button>
- </div>
-   <div class="image" style="clear:both">
-      <div class="lottery-container">
+<h2><strong>수동복권구매</strong></h2>
+ 	<hr>
+<div id="button-container" class="col-lg-4"></div>
+      <div id="lottery-container" class="col-lg-6">
          <div style="width:300px" >
          </div>
          <div>
@@ -89,11 +113,14 @@
          <input id="LtTimes" type="text" name="LtTimes" value="${LtTimes }" style="display:none">
          <input id="realMileage" type="text" name="realMileage" value="${Mileage }" style="display:none">
          <input id="userId" type="text" name="userId" value="${UserId }" style="display:none">
-         <div id="table-container">
-         <table>
-         <tr><td><p style="display:inline-block;">선택번호 확인</p><select id="selectBox" onclick=priceSelect(this)><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></td></tr>
+         <div id="table-container" >
+         <span class="span1">선택번호 확인</span>
+         <table style="margin-top:50px;">
+         <!-- <tr><td><p style="display:inline-block; width:50px; height:40px;">선택번호 확인</p> -->
+         <select class="span1" id="selectBox" onclick=priceSelect(this)><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select>
+         <!-- </td></tr> -->
          <tr class="number" style="border-top: solid 1px; border-color: black;" onclick=addClass(this)>
-            <td><p>A 자동</p></td>
+            <td><p style="width:50px;">A 자동</p></td>
             <td><input type="text" class="btn1" id="btnA1" name="btnA1" value=""></td>
             <td><input type="text" class="btn1" id="btnA2" name="btnA2" value=""></td>
             <td><input type="text" class="btn1" id="btnA3" name="btnA3" value=""></td>
@@ -144,7 +171,11 @@
          </tr>
          <tr style="border-top: solid 1px; border-color: black"></tr>
       </table>
-      </div>
+<div class="image">
+<button id="reset" style="background-color: rgb(61, 50, 182); color: white; width: 70px;display:inline-block;" type="button"  >초기화</button>
+ <button id="put" style="background-color: rgb(61, 50, 182); color: white; width: 50px;display:inline-block;" type="button"  >확인</button>
+ </div>
+      
       <table style="width:300px;margin:20px; text-align: center; padding: 0px;">
          <tr>
             <td style="border-right:1px black solid;">보유예치금</td>
@@ -155,6 +186,7 @@
             <td id="lottoprice"><input id="lotteryprice" type="text" name="price" value="5,000" readonly  style="width:60px;border:0px "></td>
          </tr>
       </table>
+      </div>
       <button id="submit" style="margin-left: 400px;" type="button" class="buybtn">구매하기</button>
       </form>
    </div>
@@ -236,7 +268,6 @@ document.querySelector('#submit').addEventListener('click',function(){
 	}
 })
 const buttonContainer = document.getElementById('button-container');
-
 for (let i = 1; i <= 45; i++) {
     const btn = document.createElement('button');
     btn.className = 'btn';

@@ -28,10 +28,10 @@ public class AddAutoControl implements Control {
 		String userNo = req.getParameter("UserNo");
 		String count = req.getParameter("count");
 		String realPrice = req.getParameter("price");
-		realPrice = realPrice.substring(0,realPrice.length() -1); 
+		realPrice = realPrice.substring(0, realPrice.length() - 1);
 		String[] strArr = realPrice.split(",");
-		String realrealPrice ="";
-		for(int i = 0 ; i<strArr.length ; i++) {
+		String realrealPrice = "";
+		for (int i = 0; i < strArr.length; i++) {
 			realrealPrice += strArr[i];
 		}
 		int price = Integer.parseInt(realrealPrice);
@@ -47,43 +47,42 @@ public class AddAutoControl implements Control {
 		userVo.setUserId(userId);
 		userServ.minusMileage(userVo);
 		session.setAttribute("Mileage", intRealMileage);
-		
+
 		int ltTimes = Integer.parseInt(req.getParameter("LtTimes")) + 1;
 		LottoVO vo = new LottoVO();
 		vo.setUserNo(Integer.parseInt(userNo));
 		vo.setLtPrice(price);
 		int countNum = (Integer.parseInt(count));
-		int ltNo1=0;
-		int ltNo2=0;
-		int ltNo3=0;
-		int ltNo4=0;
-		int ltNo5=0;
-		for(int i = 1 ; i<= countNum ; i++) {
-			if(i==1) {
-			service.insertAutoLottery(vo);
-			ltNo1 = service.getAutoNum();
-			}else if(i==2) {
-			service.insertAutoLottery(vo);
-			ltNo2 = service.getAutoNum();
-			}else if(i==3) {
-			service.insertAutoLottery(vo);
-			ltNo3 = service.getAutoNum();
-			}else if(i==4) {
-			service.insertAutoLottery(vo);
-			ltNo4 = service.getAutoNum();
-			}else if(i==5) {
-			service.insertAutoLottery(vo);
-			ltNo5 = service.getAutoNum();
+		int ltNo1 = 0;
+		int ltNo2 = 0;
+		int ltNo3 = 0;
+		int ltNo4 = 0;
+		int ltNo5 = 0;
+		for (int i = 1; i <= countNum; i++) {
+			if (i == 1) {
+				service.insertAutoLottery(vo);
+				ltNo1 = service.getAutoNum();
+			} else if (i == 2) {
+				service.insertAutoLottery(vo);
+				ltNo2 = service.getAutoNum();
+			} else if (i == 3) {
+				service.insertAutoLottery(vo);
+				ltNo3 = service.getAutoNum();
+			} else if (i == 4) {
+				service.insertAutoLottery(vo);
+				ltNo4 = service.getAutoNum();
+			} else if (i == 5) {
+				service.insertAutoLottery(vo);
+				ltNo5 = service.getAutoNum();
 			}
-			
+
 		}
-		
-		
+
 		String ltFir = req.getParameter("btnA1");
 		System.out.println(ltFir);
 		System.out.println(countNum);
-		for(int i=1; i<=countNum; i++) {
-			if(i == 1) {
+		for (int i = 1; i <= countNum; i++) {
+			if (i == 1) {
 //				String ltFir = req.getParameter("btnA1");
 				String ltSec = req.getParameter("btnA2");
 				String ltThr = req.getParameter("btnA3");
@@ -99,7 +98,7 @@ public class AddAutoControl implements Control {
 				vo1.setLtFive(Integer.parseInt(ltFive));
 				vo1.setLtSix(Integer.parseInt(ltSix));
 				service.insertAutoNum(vo1);
-			} else if(i == 2) {
+			} else if (i == 2) {
 				String ltFir2 = req.getParameter("btnB1");
 				String ltSec2 = req.getParameter("btnB2");
 				String ltThr2 = req.getParameter("btnB3");
@@ -115,7 +114,7 @@ public class AddAutoControl implements Control {
 				vo2.setLtFive(Integer.parseInt(ltFive2));
 				vo2.setLtSix(Integer.parseInt(ltSix2));
 				service.insertAutoNum(vo2);
-			} else if(i == 3) {
+			} else if (i == 3) {
 				String ltFir3 = req.getParameter("btnC1");
 				String ltSec3 = req.getParameter("btnC2");
 				String ltThr3 = req.getParameter("btnC3");
@@ -131,7 +130,7 @@ public class AddAutoControl implements Control {
 				vo3.setLtFive(Integer.parseInt(ltFive3));
 				vo3.setLtSix(Integer.parseInt(ltSix3));
 				service.insertAutoNum(vo3);
-			} else if(i == 4) {
+			} else if (i == 4) {
 				String ltFir4 = req.getParameter("btnD1");
 				String ltSec4 = req.getParameter("btnD2");
 				String ltThr4 = req.getParameter("btnD3");
@@ -147,7 +146,7 @@ public class AddAutoControl implements Control {
 				vo4.setLtFive(Integer.parseInt(ltFive4));
 				vo4.setLtSix(Integer.parseInt(ltSix4));
 				service.insertAutoNum(vo4);
-			} else if(i == 5) {
+			} else if (i == 5) {
 				String ltFir5 = req.getParameter("btnE1");
 				String ltSec5 = req.getParameter("btnE2");
 				String ltThr5 = req.getParameter("btnE3");
@@ -164,6 +163,7 @@ public class AddAutoControl implements Control {
 				vo5.setLtSix(Integer.parseInt(ltSix5));
 				service.insertAutoNum(vo5);
 			}
+		
 		}
 		LottoService service1 = new LottoServiceImpl();
 		int nextLtTimes = (int) session.getAttribute("LtTimes") + 1;
