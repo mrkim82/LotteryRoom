@@ -32,7 +32,6 @@ public class MypageControl implements Control {
       LotteryUserVO pt = new LotteryUserVO();
       pt.setUserNo(userNo);
       pt.setPage(page);
-      System.out.println("111111");
 
       List<LotteryUserVO> vo1 = service.lotteryResult(userNo);
       req.setAttribute("fir", vo1);
