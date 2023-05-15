@@ -5,6 +5,73 @@
 .mi{
 display: none;
 }
+#buttonTable {
+  text-align: center;
+}
+.usno{
+display: none;
+}
+body {
+  font-family: Arial, sans-serif;
+}
+
+table {
+  width: 100%;
+  margin-bottom: 20px;
+  border-collapse: collapse;
+}
+
+th {
+  background-color: #f5f5f5;
+  padding: 10px;
+  text-align: left;
+}
+
+td {
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+img {
+	width: 200px;
+	height: 200px;
+	display:inline-block;
+}
+input[type="text"], textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+input[type="text"], textarea {
+  width: 650px;  /* 원하는 너비로 변경하세요. 예: 150%, 200px 등 */
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+.buttonMove1{
+	position:relative;
+	left:430px;
+}
+.buttonMove2{
+	position:relative;
+	left:150px;
+}
 </style>
 <form action="updateCS.do" method="get">
 	<table >
@@ -22,13 +89,13 @@ display: none;
 	</tr>
 	<c:choose>
 	<c:when test="${VOInfo.cbGrade == 'C'}">
-		<tr style="display: block;">
-				<th>첨부파일: ${fileType }</th>
+		<tr>
+			<th></th>
 				<td>
 				<c:if test="${VOInfo.cbAttach != null }">
 				<c:choose>
 					<c:when test="${fileType == 'image'}">
-						<img width="200px" height="200px" src="images/${VOInfo.cbAttach }">
+						<img  src="images/${VOInfo.cbAttach }">
 					</c:when>
 					<c:otherwise>
 						<a href="images/${VOInfo.cbAttach}">${VOInfo.cbAttach}</a>

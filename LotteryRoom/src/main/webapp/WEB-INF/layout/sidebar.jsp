@@ -39,7 +39,7 @@
 
 	<div class="list-group list-group-flush" style="display:none;" id=StoreSide>
 		<a class="list-group-item list-group-item-action list-group-item-light p-3" href="storelist.do">전국 판매점</a>
-		<a class="list-group-item list-group-item-action list-group-item-light p-3" href="storesearch.do">근처 판매점 찾기</a>
+		<a class="list-group-item list-group-item-action list-group-item-light p-3" href="storesearch.do">근처 판매점</a>
 	</div>
 
 	<div class="list-group list-group-flush" style="display:none;" id=ResultSide>

@@ -4,67 +4,83 @@
 <!DOCTYPE html>
 <html>
 <head><style>
-.center {
-  text-align: center;
+form {
+	width: 600px;
 }
-
-.pagination {
+.btn-3d {
+  position: relative;
   display: inline-block;
-}
-
-.pagination a {
-  color: black;
-  float: left;
-  padding: 8px 16px;
-  text-decoration: none;
-  transition: background-color .3s;
-  border: 1px solid #ddd;
-  margin: 0 4px;
-}
-
-.pagination a.active {
-  background-color: #4CAF50;
+  font-size: 22px;
+  padding: 20px 60px;
   color: white;
-  border: 1px solid #4CAF50;
+  margin: 20px 10px 10px;
+  right:30px;
+  border-radius: 6px;
+  text-align: center;
+  transition: top .01s linear;
+  text-shadow: 0 1px 0 rgba(0,0,0,0.15);
+  
+  
 }
-.boardname{
-	width:1110px;
-	font-weight:bold; 
-	font-size:30px;
-	padding: 0px;
+.btn-3d.blue:hover   {background-color: #699DD1;}
+
+.btn-3d:active {
+  top: 9px;
 }
-.table{
-	width:1110px;	
-	test-align : center;
+.btn-3d.blue {
+  background-color: #6DA2D9;
+  box-shadow: 0 0 0 1px #6698cb inset,
+        0 0 0 2px rgba(255,255,255,0.15) inset,
+        0 8px 0 0 rgba(110, 164, 219, .7),
+        0 8px 0 1px rgba(0,0,0,.4),
+        0 8px 8px 1px rgba(0,0,0,0.5);
 }
-.pagination a:hover:not(.active) {background-color: #ddd;}
-.ccc{
-	width:100px;
+.btn-3d.blue:active {
+  box-shadow: 0 0 0 1px #6191C2 inset,
+        0 0 0 2px rgba(255,255,255,0.15) inset,
+        0 0 0 1px rgba(0,0,0,0.4);
 }
-.cccc{
-	width:200px;
+img {
+   width:300px;
+   height:300px;
+   margin-left:350px;
+   /* float:left; */
+   color: transparent;
+ 	text-shadow: 0 0 0 black;
+ 	position :relative;
+ 	left:20px;
 }
-.ccccc{
-	width:610px;
+.p1 {
+	margin-left:350px;
+	font-weight:bold;
+	font-size : 30px;
+	color:#FF0000;
+	font-family: 'Roboto', sans-serif;
+	
+	letter-spacing: 0.05em;
+    line-height: 1.5;
+	
 }
-a{
-text-decoration: none;
-color : black;
-}
+td{
+	color: transparent;
+	text-shadow: 0 0 0 black;
+ 	}
 </style>
 <meta charset="UTF-8">
 <title>충전하기</title>
 </head>
 <body>
-<p>충전하기 공간입니다.</p>
-<p>현재 마일리지 : <fmt:formatNumber type="number" maxFractionDigits="3" value="${Mileage }" />원 </p>
+<h2><strong>충전하기</strong></h2>
+<hr>
+<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+<img src="./images/욱환.png" alt="...">
+<p class="p1">충전과 출금 공간입니다.</p>
+<p class="p1">현재 마일리지 : <fmt:formatNumber type="number" maxFractionDigits="3" value="${Mileage }" />원 </p>
 <%-- <p>현재 마일리지 : <span id="mileage"><fmt:formatNumber type="number" maxFractionDigits="3" value="${Mileage}" />원</span></p>--%>
-	
-	<table>
-	
+	<table style="margin-left:300px;">
 		<tr>
-		<td><button type="button" onclick="location.href='recharge.jsp'">충전하기</button></td>
-		<td><button type="button" onclick=minus()>출금하기</button></td>
+		<td><button type="button" class="btn-3d blue" onclick="location.href='recharge.jsp'">충전하기</button></td>
+		<td><button type="button" style="margin-left:50px;" class="btn-3d blue" onclick=minus()>출금하기</button></td>
 		</tr>
 	</table>
 	<script>

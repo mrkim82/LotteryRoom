@@ -129,7 +129,7 @@
 			<tiles:insertAttribute name="middle"></tiles:insertAttribute>
 		<tiles:insertAttribute name="bottom"></tiles:insertAttribute> --%>
 	<tiles:insertAttribute name="top"></tiles:insertAttribute>
-	<table style="display: block; height:1000px;">
+	<table style="display: block; ">
 		<tr>
 			<td style="display : inline-block;"><tiles:insertAttribute name="sidebar"></tiles:insertAttribute>
 			</td>
