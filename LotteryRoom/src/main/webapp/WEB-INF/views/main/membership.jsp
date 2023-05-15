@@ -62,7 +62,7 @@ body {
 						<label for="email">아이디(이메일)</label> <input type="email" name="userId"
 							class="form-control" id="emailid" placeholder="you@example.com"
 							required>
-							  <button type="button" onclick="redirectToFeed()">중복확인</button>
+							  <button style="width: 80px; margin-top:5px;" class="btn btn-primary btn-sm btn-block" type="button" onclick="redirectToFeed()">중복확인</button>
 					        <script>
 					            function redirectToFeed() {
 					                var inputElement = document.getElementById("emailid");
@@ -80,7 +80,7 @@ body {
 							<label for="email">아이디(이메일)</label> <input type="email" name="userId"
 							class="form-control" id="emailid" placeholder="you@example.com"
 							value="${Idfeed.userId}" required>
-							<button type="button" onclick="redirectToFeed()">중복확인</button>
+							<button style="width: 80px;" class="btn btn-primary btn-sm btn-block"  type="button" onclick="redirectToFeed()">중복확인</button>
 							<script>
 				            function redirectToFeed() {
 				                var inputElement = document.getElementById("emailid");

@@ -138,7 +138,6 @@
 			</td>
 		</tr>
 	</table>
-	<tiles:insertAttribute name="bottom"></tiles:insertAttribute>
 
 	<!-- sidebar-->
 

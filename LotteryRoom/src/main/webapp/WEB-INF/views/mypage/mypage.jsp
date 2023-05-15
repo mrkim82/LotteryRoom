@@ -115,8 +115,8 @@ color : black;
 
 
 <!-- ===========================  마일리지 현황 =========================== -->
-	<div id="div" style="width:1000px;  position:absolute; right:0px; top:0px; padding:0px; border: 1px solid black; padding: 83px; width:490px;">
-  <table style="border-collapse: collapse; width:430px;">
+	<div id="div" style="position:absolute; right:0px; top:0px; padding:0px; border: 1px solid black; padding: 83px; width:490px;">
+  <table style="border-collapse: collapse; width:440px;">
  
     
 	    <tr style="position: absolute;  top:40px; left:50px;">

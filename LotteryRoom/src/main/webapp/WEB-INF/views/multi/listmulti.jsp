@@ -42,6 +42,9 @@
 .cccc{
 	width:200px;
 }
+.ccca{
+	display:none;
+}
 .ccccc{
 	width:610px;
 }
@@ -68,7 +71,7 @@ color : black;
 		<thead>
 			<tr>
 				<th class="ccc">글번호</th>
-				<th class="ccc">고유번호</th>	
+				<th class="ccca">고유번호</th>	
 				<th class="ccccc">제목</th>
 				<th class="cccc">작성자</th>
 				<th class="ccc">조회수</th>
@@ -80,7 +83,7 @@ color : black;
 					<c:out value="${no= no-1 }"></c:out>
 				</td>
 				
-				<td>${multi.mbId }</td>
+				<td class="ccca">${multi.mbId }</td>
 				<c:choose>
 				<c:when test="${(UserGrade == 'A' || UserGrade == 'C')}">
 				<td><a href="getMulti.do?mbId=${multi.mbId }&page=${pageInfo.pageNum }">${multi.mbTitle }</a></td>

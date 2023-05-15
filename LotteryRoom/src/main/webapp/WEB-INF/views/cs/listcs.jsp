@@ -45,6 +45,9 @@
 .ccccc{
 	width:610px;
 }
+.ccca {
+	display:none;
+}
 a{
 text-decoration: none;
 color : black;
@@ -65,7 +68,7 @@ color : black;
 		<thead>
 			<tr>
 				<th class="ccc">글번호</th>
-				<th class="ccc">고유번호</th>	
+				<th class="ccca">고유번호</th>	
 				<th class="ccccc">제목</th>
 				<th class="cccc">작성자</th>
 				<th class="ccc">조회수</th>
@@ -77,7 +80,7 @@ color : black;
 					<c:out value="${no= no-1 }"></c:out>
 					
 				</td>
-				<td>${cs.cbId }</td>
+				<td class="ccca">${cs.cbId }</td>
 				<c:choose>
 				<c:when test="${(cs.cbGrade == 'C') && (UserGrade == 'A' || (UserNo == cs.userNo))}">
 				<td><a href="getCS.do?cbId=${cs.cbId }&page=${pageInfo.pageNum }">${cs.cbTitle }</a></td>

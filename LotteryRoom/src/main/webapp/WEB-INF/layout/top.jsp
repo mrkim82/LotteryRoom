@@ -10,6 +10,14 @@
 			<div class="col-4 text-center">
 				<a class="blog-header-logo text-body-emphasis" href="main.do" style="font-size: 40px;">Lottery
 					Room</a>
+    <header class="blog-header lh-1 py-3">
+        <div class="row flex-nowrap justify-content-between align-items-center">
+            <div class="col-4 pt-1">
+            
+    		<img src="./images/현용이형.png" title="현용" style="width: 50px;">
+    		<img src="./images/희영이누나.png" title="희영" style="width: 50px;">
+    		<img src="./images/욱환.png"  title="욱환" style="width: 50px;">
+    		<img src="./images/성현이.png" title="성현" style="width: 50px;">
 			</div>
 			<div class="col-4 d-flex justify-content-end align-items-center">
 				<c:choose>
