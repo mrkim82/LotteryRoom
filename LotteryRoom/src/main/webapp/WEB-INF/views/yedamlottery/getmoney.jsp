@@ -19,10 +19,8 @@ form {
   text-align: center;
   transition: top .01s linear;
   text-shadow: 0 1px 0 rgba(0,0,0,0.15);
-  
-  
 }
-.btn-3d.blue:hover   {background-color: #699DD1;}
+.btn-3d.blue:hover   {background-color: #e2e2e2;}
 
 .btn-3d:active {
   top: 9px;
@@ -40,16 +38,6 @@ form {
         0 0 0 2px rgba(255,255,255,0.15) inset,
         0 0 0 1px rgba(0,0,0,0.4);
 }
-img {
-   width:300px;
-   height:300px;
-   margin-left:350px;
-   /* float:left; */
-   color: transparent;
- 	text-shadow: 0 0 0 black;
- 	position :relative;
- 	left:20px;
-}
 .p1 {
 	margin-left:350px;
 	font-weight:bold;
@@ -65,6 +53,8 @@ td{
 	color: transparent;
 	text-shadow: 0 0 0 black;
  	}
+ 	
+ 	
 </style>
 <meta charset="UTF-8">
 <title>충전하기</title>
@@ -73,14 +63,14 @@ td{
 <h2><strong>충전하기</strong></h2>
 <hr>
 <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-<img src="./images/욱환.png" alt="...">
+<img src="./images/욱환.png" alt="..." style="width: 300px; height: 300px; margin-left: 350px; color: transparent; text-shadow: 0 0 0 black; position: relative; left: 20px;">
 <p class="p1">충전과 출금 공간입니다.</p>
 <p class="p1">현재 마일리지 : <fmt:formatNumber type="number" maxFractionDigits="3" value="${Mileage }" />원 </p>
 <%-- <p>현재 마일리지 : <span id="mileage"><fmt:formatNumber type="number" maxFractionDigits="3" value="${Mileage}" />원</span></p>--%>
 	<table style="margin-left:300px;">
 		<tr>
 		<td><button type="button" class="btn-3d blue" onclick="location.href='recharge.jsp'">충전하기</button></td>
-		<td><button type="button" style="margin-left:50px;" class="btn-3d blue" onclick=minus()>출금하기</button></td>
+		<td><button type="button" style="margin-left:50px; background-color: #0b1e7e; color: white;" class="btn-3d" onclick="minus()">출금하기</button></td>
 		</tr>
 	</table>
 	<script>

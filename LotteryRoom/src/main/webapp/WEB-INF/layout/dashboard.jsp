@@ -119,8 +119,5 @@
    <tiles:insertAttribute name="middle"></tiles:insertAttribute>
 	</table>
 
-	<!-- bottom-->
-	<tiles:insertAttribute name="bottom"></tiles:insertAttribute>
-    
   </body>
 </html>
