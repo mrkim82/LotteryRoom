@@ -31,11 +31,6 @@ td {
   padding: 10px;
   border-bottom: 1px solid #eee;
 }
-img {
-	width: 200px;
-	height: 200px;
-	display:inline-block;
-}
 input[type="text"], textarea {
   width: 100%;
   padding: 10px;
@@ -66,11 +61,15 @@ input[type="text"], textarea {
 }
 .buttonMove1{
 	position:relative;
-	left:430px;
+	left:510px;
 }
 .buttonMove2{
 	position:relative;
-	left:150px;
+	left:430px;
+}
+.buttonMove3{
+	position:relative;
+	left:100px;
 }
 </style>
 <form action="updateCS.do" method="get">
@@ -95,7 +94,8 @@ input[type="text"], textarea {
 				<c:if test="${VOInfo.cbAttach != null }">
 				<c:choose>
 					<c:when test="${fileType == 'image'}">
-						<img  src="images/${VOInfo.cbAttach }">
+						<img src="images/${VOInfo.cbAttach}" style="display: inline-block; width: 200px; height: 200px;;">
+						
 					</c:when>
 					<c:otherwise>
 						<a href="images/${VOInfo.cbAttach}">${VOInfo.cbAttach}</a>
@@ -115,18 +115,18 @@ input[type="text"], textarea {
 		<tr>
 		<c:choose>
 		<c:when test="${UserGrade == 'A'}">
-		<td><button type="submit">수정</button></td>
-		<td><button type="button" 
+		<td><button class="buttonMove1" type="submit">수정</button></td>
+		<td><button class="buttonMove2" type="button" 
 		onclick="location.href='removeCS.do?cbId=${VOInfo.cbId}&cbGrade=${VOInfo.cbGrade}'">삭제</button></td>
 		</c:when>
 		<c:when test="${(UserGrade == 'C' && VOInfo.cbGrade == 'C') && (UserNo == VOInfo.userNo)}">
-		<td><button type="submit">수정</button></td>
-		<td><button type="button" 
+		<td><button class="buttonMove1" type="submit">수정</button></td>
+		<td><button class="buttonMove2" type="button" 
 		onclick="location.href='removeCS.do?cbId=${VOInfo.cbId}&cbGrade=${VOInfo.cbGrade}'">삭제</button></td>
 		</c:when>
 		</c:choose>
 		<!-- 전체 리스트페이지 이동 시 페이징 한 값이 필요 -->
-		<td><button type="button" 
+		<td><button type="button" class="buttonMove3"
 		onclick="location.href='listCS.do?cbGrade=${VOInfo.cbGrade}&page=${pageNum}'">목록</button></td>
 		</tr>
 	</table>
@@ -163,7 +163,7 @@ input[type="text"], textarea {
 
 <!-- 댓글등록. -->
 <div id="content">
-	<input type="text" id="reply"> <span>${UserNo }</span>
+	<input type="text" id="reply"> <span style="display:none;">${UserNo }</span>
 	<button type="button" id="addBtn">댓글등록</button>
 </div>
 

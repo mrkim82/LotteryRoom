@@ -8,6 +8,74 @@
 #content {
 	padding: 15px auto;   
 }
+.listButton{
+	
+}
+.mi{
+display: none;
+}
+#buttonTable {
+  text-align: center;
+}
+.usno{
+display: none;
+}
+body {
+  font-family: Arial, sans-serif;
+}
+
+table {
+  width: 100%;
+  margin-bottom: 20px;
+  border-collapse: collapse;
+}
+
+th {
+  background-color: #f5f5f5;
+  padding: 10px;
+  text-align: left;
+}
+
+td {
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+input[type="text"], textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+input[type="text"], textarea {
+  width: 650px;  /* 원하는 너비로 변경하세요. 예: 150%, 200px 등 */
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+.buttonMove1{
+	position:relative;
+	left:510px;
+}
+.buttonMove2{
+	position:relative;
+	left:150px;
+}
 </style>
 <form action="updateMulti.do" method="get">
 	<table >
@@ -25,13 +93,13 @@
 	</tr>
 	<c:choose>
 	<c:when test="${VOInfo.mbGrade == 'K'}">
-		<tr style="display: block;">
-				<th>첨부파일: ${fileType }</th>
+		<tr>
+				<th></th>
 				<td>
 				<c:if test="${VOInfo.mbAttach != null }">
 				<c:choose>
 					<c:when test="${fileType == 'image'}">
-						<img width="200px" height="200px" src="images/${VOInfo.mbAttach }">
+			   <img width="200px" height="200px" src="images/${VOInfo.mbAttach }" style="display: inline-block;">
 					</c:when>
 					<c:otherwise>
 						<a href="images/${VOInfo.mbAttach}">${VOInfo.mbAttach}</a>
@@ -51,18 +119,19 @@
 		<tr>
 		<c:choose>
 		<c:when test="${UserGrade == 'A'}">
-		<td><button type="submit">수정</button></td>
-		<td><button type="button" 
+		<td><button type="submit" style="display:relative; left:450px;" class="buttonMove1">수정</button></td>
+		<td><button type="button" style="display:relative; left:300px;" class="buttonMove2"
 		onclick="location.href='removeMulti.do?mbId=${VOInfo.mbId}&mbGrade=${VOInfo.mbGrade}'">삭제</button></td>
 		</c:when>
 		<c:when test="${(UserGrade == 'C' && VOInfo.mbGrade == 'J') && (UserNo == VOInfo.userNo)}">
-		<td><button type="submit">수정</button></td>
-		<td><button type="button" 
+		<td><button type="submit" style="display:relative; left:200px;" class="buttonMove1">수정</button></td>
+		<td><button type="button" style="display:relative; left:300px;" class="buttonMove2"
 		onclick="location.href='removeMulti.do?mbId=${VOInfo.mbId}&mbGrade=${VOInfo.mbGrade}'">삭제</button></td>
 		</c:when>
 		</c:choose>
 		<!-- 전체 리스트페이지 이동 시 페이징 한 값이 필요 -->
-		<td><button type="button" 
+		
+		<td><button type="button" class="buttonMove2"
 		onclick="location.href='listMulti.do?mbGrade=${VOInfo.mbGrade}&page=${pageNum}'">목록</button></td>
 		</tr>
 	</table>
@@ -99,7 +168,7 @@
 
 <!-- 댓글등록. -->
 <div id="content">
-	<input type="text" id="reply"> <span>${UserNo }</span>
+	<input type="text" id="reply"> <span style="display:none;">${UserNo }</span>
 	<button type="button" id="addBtn">댓글등록</button>
 </div>
 

@@ -57,9 +57,12 @@ table.part2{
 .textall{
 	padding-top: 80px;
 }
+
+@import url('https://fonts.googleapis.com/css2?family=Hahmlet&display=swap');
+
 </style>
 <div id="all">
-	<h4 class="part1">실시간 당첨금 내역</h4>
+	<h4 class="part1" style="font-family: 'Hahmlet', serif;">실시간 당첨금 내역</h4>
 	<hr class="part1">
 	<div class="part1">
 		<table class="part1">
@@ -73,7 +76,7 @@ table.part2{
 	</div>
 	<br>
 	<div class="part2" style="float: left;">
-		<h4>실시간 예상 당첨금</h4>
+		<h4 style="font-family: 'Hahmlet', serif;">실시간 예상 당첨금</h4>
 		<table class="part2" style="margin-top: 20px;">
 			<tr>
 				<td class="textleft" style="color: firebrick;">1등</td>

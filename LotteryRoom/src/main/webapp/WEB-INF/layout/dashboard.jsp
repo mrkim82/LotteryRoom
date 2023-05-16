@@ -77,6 +77,7 @@
         text-align: center;
         white-space: nowrap;
         -webkit-overflow-scrolling: touch;
+        background-color: black;
         
       }
 
@@ -119,8 +120,5 @@
    <tiles:insertAttribute name="middle"></tiles:insertAttribute>
 	</table>
 
-	<!-- bottom-->
-	<tiles:insertAttribute name="bottom"></tiles:insertAttribute>
-    
   </body>
 </html>

@@ -73,7 +73,7 @@
    <select id="lotteryResult" parameterType="int" resultType="lotteryuser">
       
 select * from win y join 
- (select r.lt_times, o.lt_no, o.user_no, r.totsum, r.lt_fir,r.lt_sec,r.lt_thr,r.lt_four,r.lt_five,r.lt_six from lottery o join 
+ (select r.lt_times, r.lt_no, o.user_no, r.totsum, r.lt_fir,r.lt_sec,r.lt_thr,r.lt_four,r.lt_five,r.lt_six from lottery o join 
        (select * from (select t.lt_no, t.lt_times, t.lt_fir,t.lt_sec,t.lt_thr,t.lt_four,t.lt_five,t.lt_six,w.win_fir, w.win_sec, w.win_thr, w.win_four, w.win_five, w.win_six,
         decode((t.lt_fir -  w.win_fir ) * 
                 (t.lt_fir -  w.win_sec ) *

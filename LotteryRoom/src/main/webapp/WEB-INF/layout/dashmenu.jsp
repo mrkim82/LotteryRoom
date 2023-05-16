@@ -81,6 +81,7 @@
 	text-align: center;
 	white-space: nowrap;
 	-webkit-overflow-scrolling: touch;
+    background-color: black;
 }
 
 .btn-bd-primary { -
@@ -122,7 +123,7 @@
 	crossorigin="anonymous">
 <link href="css/blog.css" rel="stylesheet">
 </head>
-<body class="container" style="margin-left:300px">
+<body class="container">
 	<!-- top-->
 	<%-- 		<tiles:insertAttribute name="top"></tiles:insertAttribute>
 			<tiles:insertAttribute name="sidebar"></tiles:insertAttribute>
@@ -137,7 +138,6 @@
 			</td>
 		</tr>
 	</table>
-	<tiles:insertAttribute name="bottom"></tiles:insertAttribute>
 
 	<!-- sidebar-->
 

@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Hahmlet&display=swap');
 .center {
   text-align: center;
 }
@@ -45,6 +46,9 @@
 .ccccc{
 	width:610px;
 }
+.ccca {
+	display:none;
+}
 a{
 text-decoration: none;
 color : black;
@@ -53,10 +57,10 @@ color : black;
 <div >
 <c:choose>
 <c:when test="${listInfo[0].cbGrade == 'F' }">
-<p class="boardname">FAQ</p>
+<p class="boardname" style="font-family: 'Hahmlet', serif;">FAQ</p>
 </c:when>
 <c:when test="${listInfo[0].cbGrade == 'C' }">
-<p class="boardname">1:1문의</p>
+<p class="boardname" style="font-family: 'Hahmlet', serif;">1:1문의</p>
 </c:when>
 </c:choose>
 	<c:set var="no" value="${(totalcount-(pageInfo.pageNum-1) * 10) + 1 }"></c:set>
@@ -65,7 +69,7 @@ color : black;
 		<thead>
 			<tr>
 				<th class="ccc">글번호</th>
-				<th class="ccc">고유번호</th>	
+				<th class="ccca">고유번호</th>	
 				<th class="ccccc">제목</th>
 				<th class="cccc">작성자</th>
 				<th class="ccc">조회수</th>
@@ -77,7 +81,7 @@ color : black;
 					<c:out value="${no= no-1 }"></c:out>
 					
 				</td>
-				<td>${cs.cbId }</td>
+				<td class="ccca">${cs.cbId }</td>
 				<c:choose>
 				<c:when test="${(cs.cbGrade == 'C') && (UserGrade == 'A' || (UserNo == cs.userNo))}">
 				<td><a href="getCS.do?cbId=${cs.cbId }&page=${pageInfo.pageNum }">${cs.cbTitle }</a></td>
