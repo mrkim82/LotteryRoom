@@ -94,7 +94,7 @@ input[type="text"], textarea {
 				<c:if test="${VOInfo.cbAttach != null }">
 				<c:choose>
 					<c:when test="${fileType == 'image'}">
-						<img  src="images/${VOInfo.cbAttach }">
+						<img src="images/${VOInfo.cbAttach}" style="display: inline-block; width: 200px; height: 200px;;">
 						
 					</c:when>
 					<c:otherwise>
