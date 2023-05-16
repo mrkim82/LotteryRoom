@@ -2,6 +2,9 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <style>
+  @import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Hahmlet&display=swap');
+
 form {
 	width: 300px;
 	display: inline-block;
@@ -122,12 +125,14 @@ li span {
 	width: 90px;
 	text-align: right;
 	font-size: 22px;
+	font-family: 'Hahmlet', serif;
 }
 
 .reward{
 	width: 210px;
 	text-align: center;
 	font-size: 22px;
+	font-family: 'Hahmlet', serif;
 }
 
 #days, #hours, #minutes, #seconds{
@@ -151,7 +156,7 @@ li span {
 			<div>
 				<table style="width: 997px;">
 					<tr>
-						<td style="font-size: 25px; padding-top: 40px;"><b
+						<td style="font-size: 25px; padding-top: 40px; font-family: 'Hahmlet', serif;"><b
 							id="ltTimes1"></b><b>회 </b>당첨결과</td>
 					</tr>
 					<tr>
@@ -177,7 +182,7 @@ li span {
 			</div>
 			<br>
 			<div class="container1">
-				<h3 id="ltTimes3">회차 추첨일</h3>
+				<h3 id="ltTimes3" style="font-family: 'Hahmlet', serif;">회차 추첨일</h3>
 				<div id="countdown">
 					<ul>
 						<li><button id="days" style="color: white;"></button> 일 </li>
@@ -194,7 +199,7 @@ li span {
 				<form action="login.do" method="get" style="height: 400px; padding-top: 15px;">
 					<fieldset>
 						<img src="./images/복권방로고150.jpg" alt="이쿠조">
-						<legend>가즈아 복권방</legend>
+						<legend style="font-family: 'Hahmlet', serif;">가즈아 복권방</legend>
 						<button type="submit" class="login">Lottery Room Login</button>
 					</fieldset>
 					<fieldset>
@@ -245,7 +250,7 @@ li span {
 	<td style="width: 300px; height: 455px;">
 		<fieldset class="bolda" style="height: 450px;">
 			<div class="part2" style="float: left;">
-				<h4 style="margin-top: 25px; padding-bottom: 10px; width: 300px; font-weight: bold; text-align: center;">실시간 예상 당첨금</h4>
+				<h4 style="margin-top: 25px; padding-bottom: 10px; width: 300px; font-weight: bold; text-align: center; font-family: 'Hahmlet', serif;">실시간 예상 당첨금</h4>
 				<table class="part2" style="margin-top: 20px;">
 					<tr>
 						<td class="rank" style="color: firebrick;">1등</td>

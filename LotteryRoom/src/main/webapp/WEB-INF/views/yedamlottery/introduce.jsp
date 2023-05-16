@@ -6,6 +6,9 @@
 <html>
 <head>
 <style>
+
+@import url('https://fonts.googleapis.com/css2?family=Hahmlet&display=swap');
+
 .name {
 color :#0431B4;
 font-weight: 700;
@@ -22,7 +25,7 @@ font-weight: 700;
 <title>예담복권 소개</title>
 </head>
 <body>
-<h2 class="name0">예담복권</h2>
+<h4 class="name0" style="font-family: 'Hahmlet', serif;">예담복권</h4>
 <hr>
 <img src="./images/복권방로고.png" alt="..." style="width:400px; height:400px; float:left; margin-right: 50px;"><br>
 <span>이쿠조 철학 : <br><strong class="simple">"Simple is the best"</strong></span><br>
@@ -35,7 +38,7 @@ font-weight: 700;
 <p> &nbsp </p>
 
 
-<h3 class="name0">만남 횟수</h3>
+<h4 class="name0" style="font-family: 'Hahmlet', serif;">만남 횟수</h4>
 <hr>
 <p><span class="name">4월 22일 토요일</span> <strong>김현용, 김욱환, 김성현</strong> 만촌 풀바셋 DT점에서 만남.<br>
 <span class="name">4월 24일 월요</span> <strong>김현용, 손희영, 김욱환, 김성현</strong> 삼덕동 투썸플레이스에서 만남.<br>

@@ -2,6 +2,9 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Hahmlet&display=swap');
+
 .center {
   text-align: center;
 }
@@ -30,6 +33,7 @@
 	font-weight:bold; 
 	font-size:20px;
 	padding: 0px;
+	font-family: 'Hahmlet', serif;
 }
 
 table, th, td{

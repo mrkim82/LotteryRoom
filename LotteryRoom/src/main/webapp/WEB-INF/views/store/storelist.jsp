@@ -3,6 +3,9 @@
 <!DOCTYPE html>
 <html>
 <style>
+
+@import url('https://fonts.googleapis.com/css2?family=Hahmlet&display=swap');
+
 .market {
 	font-weight : bold;
 	color: green;
@@ -172,7 +175,7 @@ h1 {
 </head>
 
 <body>
-	<img src="./images/현용이형.png" class="sung"><h2 class="h2c"><strong>복권 판매점 위치 조회</strong></h2><img src="./images/성현이.png" class="sung">
+	<img src="./images/현용이형.png" class="sung"><h2 class="h2c" style="font-family: 'Hahmlet', serif;">복권 판매점 위치 조회</h2><img src="./images/성현이.png" class="sung">
 	<hr>
 	<div class="button-container">
 		<select class="Select" id="Select">

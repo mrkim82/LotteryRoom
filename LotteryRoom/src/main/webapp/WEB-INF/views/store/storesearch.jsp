@@ -7,6 +7,9 @@
 h1 {
 	text-align: center;
 }
+
+@import url('https://fonts.googleapis.com/css2?family=Hahmlet&display=swap');
+
 </style>
 
 
@@ -20,7 +23,7 @@ h1 {
 
 
 <body>
-	<h1>가장 가까운 판매점</h1>
+	<h4 style="font-family: 'Hahmlet', serif;">근처 판매점</h4>
 
 <div id="map" style="width:1100px;height:800px;"></div>
 
