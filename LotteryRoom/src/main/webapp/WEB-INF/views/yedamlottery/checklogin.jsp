@@ -50,7 +50,7 @@ table{
 <title>복권구매 선택 페이지</title>
 </head>
 <body>
-<h2><strong>복권구매</strong></h2>
+<h4><strong style="font-family: 'Hahmlet', serif;">복권구매</strong></h4>
 <hr>
 <img src="./images/공모양.png" alt="여기에 뭐 적어야함?" style="width:800px; height:400px; margin-left:100px;">
 <table>

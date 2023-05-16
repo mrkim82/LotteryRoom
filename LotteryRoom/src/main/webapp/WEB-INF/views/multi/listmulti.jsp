@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Hahmlet&display=swap');
 .center {
   text-align: center;
 }
@@ -56,13 +57,13 @@ color : black;
 <div >
 <c:choose>
 <c:when test="${listInfo[0].mbGrade == 'E' }">
-<p class="boardname">공지사항</p>
+<p class="boardname" style="font-family: 'Hahmlet', serif;">공지사항</p>
 </c:when>
 <c:when test="${listInfo[0].mbGrade == 'K' }">
-<p class="boardname">언론보도</p>
+<p class="boardname" style="font-family: 'Hahmlet', serif;">언론보도</p>
 </c:when>
 <c:when test="${listInfo[0].mbGrade == 'J' }">
-<p class="boardname">커뮤니티</p>
+<p class="boardname" style="font-family: 'Hahmlet', serif;">커뮤니티</p>
 </c:when>
 </c:choose>
 	<c:set var="no" value="${(totalcount-(pageInfo.pageNum-1) * 10) + 1 }"></c:set>
@@ -104,10 +105,12 @@ color : black;
 	<tr>
 		<c:choose>
 		<c:when test="${UserGrade == 'A'}">
-		<td><button type="button" onclick="location.href='addMulti.do?mbGrade=${listInfo[0].mbGrade}'">글작성</button></td>
+		<td><button type="button" onclick="location.href='addMulti.do?mbGrade=${listInfo[0].mbGrade}'"
+			style="background-color: black; color: white;">글작성</button></td>
 		</c:when>
 		<c:when test="${UserGrade == 'C' && listInfo[0].mbGrade == 'J'}">
-		<td><button type="button" onclick="location.href='addMulti.do?mbGrade=${listInfo[0].mbGrade}'">글작성</button></td>
+		<td><button type="button" onclick="location.href='addMulti.do?mbGrade=${listInfo[0].mbGrade}'"
+			style="background-color: black; color: white;">글작성</button></td>
 		</c:when>
 		</c:choose>
 	</tr>

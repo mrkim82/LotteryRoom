@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Hahmlet&display=swap');
 .center {
   text-align: center;
 }
@@ -56,10 +57,10 @@ color : black;
 <div >
 <c:choose>
 <c:when test="${listInfo[0].cbGrade == 'F' }">
-<p class="boardname">FAQ</p>
+<p class="boardname" style="font-family: 'Hahmlet', serif;">FAQ</p>
 </c:when>
 <c:when test="${listInfo[0].cbGrade == 'C' }">
-<p class="boardname">1:1문의</p>
+<p class="boardname" style="font-family: 'Hahmlet', serif;">1:1문의</p>
 </c:when>
 </c:choose>
 	<c:set var="no" value="${(totalcount-(pageInfo.pageNum-1) * 10) + 1 }"></c:set>

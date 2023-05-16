@@ -60,7 +60,7 @@ td{
 <title>충전하기</title>
 </head>
 <body>
-<h2><strong>충전하기</strong></h2>
+<h4><strong style="font-family: 'Hahmlet', serif;">충전하기</strong></h4>
 <hr>
 <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 <img src="./images/욱환.png" alt="..." style="width: 300px; height: 300px; margin-left: 350px; color: transparent; text-shadow: 0 0 0 black; position: relative; left: 20px;">
