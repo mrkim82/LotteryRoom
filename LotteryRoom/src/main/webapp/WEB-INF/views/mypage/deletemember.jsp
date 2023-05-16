@@ -34,11 +34,11 @@ button {
 }
 
 .div{
-	border: 3px solid black;
-	height: 530px;
-	width: 400px;
-	margin-left: 280px;
-	margin-top : 50px;
+   border: 3px solid black;
+   height: 530px;
+   width: 400px;
+   margin-left: 280px;
+   margin-top : 50px;
 }
 
 button:hover {
@@ -48,7 +48,7 @@ button:hover {
 </head>
 <body>
   <form action="deletemember.do" method="POST" novalidate>
-    <div class="div">
+    <div class="div">   
       <h1 style="margin-left:30px; margin-top: 20px; font-family: 'Hahmlet', serif;">정말 회원 탈퇴를 하시겠습니까?</h1>
       <img src="./images/유병재.jpg" width="300px" height="300px" style="margin-left:45px;">
       <p style="margin-left:35px; margin-top:30px; font-family: 'Hahmlet', serif;">**마일리지 보유중이시면 탈퇴가 불가합니다**</p>
@@ -59,7 +59,7 @@ button:hover {
           <button type="submit">탈퇴</button>
         </c:when>
         <c:otherwise>
-          <button type="button" onclick="alert('마일리지 보유중입니다.');" >탈퇴</button>
+      	   <button type="button" onclick="alert('마일리지 보유중입니다.');" >탈퇴</button>
         </c:otherwise>
       </c:choose>
       
