@@ -12,4 +12,3 @@ public interface Control {
 	}
 // test1
 // test2
-// test3 현용이형꺼 테스트용.
