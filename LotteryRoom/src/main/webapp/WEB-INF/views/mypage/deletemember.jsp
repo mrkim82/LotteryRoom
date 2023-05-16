@@ -32,11 +32,11 @@ button {
 }
 
 .div{
-	border: 3px solid black;
-	height: 530px;
-	width: 400px;
-	margin-left: 280px;
-	margin-top : 50px;
+   border: 3px solid black;
+   height: 530px;
+   width: 400px;
+   margin-left: 280px;
+   margin-top : 50px;
 }
 
 button:hover {
@@ -47,17 +47,21 @@ button:hover {
 <body>
   <form action="deletemember.do" method="POST" novalidate>
     <div class="div">
-      <h1 style="margin-left:30px; margin-top: 20px;" >정말 회원 탈퇴를 하시겠습니까?</h1>
-       <img src="./images/유병재.jpg" width="300px" height="300px" style="margin-left:45px;">
-      <p style="margin-left:35px; margin-top:30px;" >**마일리지 보유중이시면 탈퇴가 불가합니다**</p>
-      <p style="margin-left:30px;">**현재 보유 마일리지는${VOInfo.mileage} 마일리지 입니다**</p>
+      <h1 style="margin-left:30px; margin-top: 20px;">정말 회원 탈퇴를 하시겠습니까?</h1>
+      <img src="./images/유병재.jpg" width="300px" height="300px" style="margin-left:45px;">
+      <p style="margin-left:35px; margin-top:30px;">**마일리지 보유중이시면 탈퇴가 불가합니다**</p>
+      <p style="margin-left:30px;">**현재 보유 마일리지는 ${VOInfo.mileage} 마일리지 입니다**</p>
+      
       <c:choose>
-        <c:when test="${VOInfo.mileage == null || VOInfo.mileage == 0 }"></c:when>
+        <c:when test="${VOInfo.mileage == null || VOInfo.mileage == 0}">
+          <button type="submit">탈퇴</button>
+        </c:when>
         <c:otherwise>
-          <button type="button" onclick="alert('마일리지를 보유중입니다.');">탈퇴</button>
+          <button type="button" onclick="alert('마일리지 보유중입니다.');">탈퇴</button>
         </c:otherwise>
       </c:choose>
-       <button class="cancel-btn" type="button" onclick="alert('회원 탈퇴를 취소했습니다.');">취소</button>
+      
+      <button class="cancel-btn" type="button" onclick="alert('회원 탈퇴를 취소했습니다.');">취소</button>
     </div>  
   </form>
 </body>

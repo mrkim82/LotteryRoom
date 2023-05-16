@@ -35,8 +35,9 @@ public class MypageControl implements Control {
 
       List<LotteryUserVO> vo1 = service.lotteryResult(userNo);
       req.setAttribute("fir", vo1);
-      System.out.println(vo1);
+      System.out.println("222"+vo1);
       List<LotteryUserVO> vo = service.searchLottery(pt);
+      System.out.println("111"+vo);
       PageDTO dto = new PageDTO(page, total);
       req.setAttribute("listInfo", vo);
       req.setAttribute("pageInfo", dto);

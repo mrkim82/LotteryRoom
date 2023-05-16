@@ -178,7 +178,7 @@ color : black;
           <c:set var="isWinning" value="false"></c:set> <!-- 기본적으로 당첨되지 않았다고 가정합니다. -->
           <c:if test="${isWinning == false}">
             <c:forEach var="firItem" items="${fir}">
-              <c:if test="${lottery.ltTimes == firItem.ltTimes}">
+              <c:if test="${lottery.ltTimes == firItem.ltTimes && lottery.ltFir == firItem.ltFir && lottery.ltSec == firItem.ltSec && lottery.ltThr == firItem.ltThr && lottery.ltFour == firItem.ltFour && lottery.ltFive == firItem.ltFive && lottery.ltSix == firItem.ltSix}">
                 <c:set var="isWinning" value="true"></c:set> <!-- 당첨되었음을 표시합니다. -->
                 <c:set var="status" value="break"></c:set> <!-- 반복문을 중단하기 위해 status 값을 변경합니다. -->
               </c:if>
