@@ -2,9 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <style>
-.listButton{
-	
-}
 .mi{
 display: none;
 }
@@ -33,11 +30,6 @@ th {
 td {
   padding: 10px;
   border-bottom: 1px solid #eee;
-}
-img {
-	width: 200px;
-	height: 200px;
-	display:inline-block;
 }
 input[type="text"], textarea {
   width: 100%;
@@ -69,11 +61,15 @@ input[type="text"], textarea {
 }
 .buttonMove1{
 	position:relative;
-	left:430px;
+	left:510px;
 }
 .buttonMove2{
 	position:relative;
-	left:150px;
+	left:430px;
+}
+.buttonMove3{
+	position:relative;
+	left:100px;
 }
 </style>
 <form action="updateCS.do" method="get">
@@ -99,6 +95,7 @@ input[type="text"], textarea {
 				<c:choose>
 					<c:when test="${fileType == 'image'}">
 						<img  src="images/${VOInfo.cbAttach }">
+						
 					</c:when>
 					<c:otherwise>
 						<a href="images/${VOInfo.cbAttach}">${VOInfo.cbAttach}</a>
@@ -118,18 +115,18 @@ input[type="text"], textarea {
 		<tr>
 		<c:choose>
 		<c:when test="${UserGrade == 'A'}">
-		<td><button type="submit">수정</button></td>
-		<td><button type="button" 
+		<td><button class="buttonMove1" type="submit">수정</button></td>
+		<td><button class="buttonMove2" type="button" 
 		onclick="location.href='removeCS.do?cbId=${VOInfo.cbId}&cbGrade=${VOInfo.cbGrade}'">삭제</button></td>
 		</c:when>
 		<c:when test="${(UserGrade == 'C' && VOInfo.cbGrade == 'C') && (UserNo == VOInfo.userNo)}">
-		<td><button type="submit">수정</button></td>
-		<td><button type="button" 
+		<td><button class="buttonMove1" type="submit">수정</button></td>
+		<td><button class="buttonMove2" type="button" 
 		onclick="location.href='removeCS.do?cbId=${VOInfo.cbId}&cbGrade=${VOInfo.cbGrade}'">삭제</button></td>
 		</c:when>
 		</c:choose>
 		<!-- 전체 리스트페이지 이동 시 페이징 한 값이 필요 -->
-		<td><button type="button" class="listButton"
+		<td><button type="button" class="buttonMove3"
 		onclick="location.href='listCS.do?cbGrade=${VOInfo.cbGrade}&page=${pageNum}'">목록</button></td>
 		</tr>
 	</table>

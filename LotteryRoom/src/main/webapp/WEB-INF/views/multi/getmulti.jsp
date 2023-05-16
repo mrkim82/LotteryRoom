@@ -40,11 +40,6 @@ td {
   padding: 10px;
   border-bottom: 1px solid #eee;
 }
-img {
-	width: 200px;
-	height: 200px;
-	display:inline-block;
-}
 input[type="text"], textarea {
   width: 100%;
   padding: 10px;
@@ -75,7 +70,7 @@ input[type="text"], textarea {
 }
 .buttonMove1{
 	position:relative;
-	left:430px;
+	left:510px;
 }
 .buttonMove2{
 	position:relative;
@@ -98,13 +93,13 @@ input[type="text"], textarea {
 	</tr>
 	<c:choose>
 	<c:when test="${VOInfo.mbGrade == 'K'}">
-		<tr style="display: block;">
-				<th>첨부파일: ${fileType }</th>
+		<tr>
+				<th></th>
 				<td>
 				<c:if test="${VOInfo.mbAttach != null }">
 				<c:choose>
 					<c:when test="${fileType == 'image'}">
-						<img width="200px" height="200px" src="images/${VOInfo.mbAttach }">
+			   <img width="200px" height="200px" src="images/${VOInfo.mbAttach }" style="display: inline-block;">
 					</c:when>
 					<c:otherwise>
 						<a href="images/${VOInfo.mbAttach}">${VOInfo.mbAttach}</a>
@@ -124,19 +119,19 @@ input[type="text"], textarea {
 		<tr>
 		<c:choose>
 		<c:when test="${UserGrade == 'A'}">
-		<td><button type="submit" style="display:relative; left:100px;">수정</button></td>
-		<td><button type="button" style="display:relative; left:200px;
+		<td><button type="submit" style="display:relative; left:450px;" class="buttonMove1">수정</button></td>
+		<td><button type="button" style="display:relative; left:300px;" class="buttonMove2"
 		onclick="location.href='removeMulti.do?mbId=${VOInfo.mbId}&mbGrade=${VOInfo.mbGrade}'">삭제</button></td>
 		</c:when>
 		<c:when test="${(UserGrade == 'C' && VOInfo.mbGrade == 'J') && (UserNo == VOInfo.userNo)}">
-		<td><button type="submit" style="display:relative; left:200px;" >수정</button></td>
-		<td><button type="button" 
+		<td><button type="submit" style="display:relative; left:200px;" class="buttonMove1">수정</button></td>
+		<td><button type="button" style="display:relative; left:300px;" class="buttonMove2"
 		onclick="location.href='removeMulti.do?mbId=${VOInfo.mbId}&mbGrade=${VOInfo.mbGrade}'">삭제</button></td>
 		</c:when>
 		</c:choose>
 		<!-- 전체 리스트페이지 이동 시 페이징 한 값이 필요 -->
 		
-		<td><button type="button" 
+		<td><button type="button" class="buttonMove2"
 		onclick="location.href='listMulti.do?mbGrade=${VOInfo.mbGrade}&page=${pageNum}'">목록</button></td>
 		</tr>
 	</table>
