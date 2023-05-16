@@ -62,11 +62,11 @@ input[type="text"], textarea {
 }
 .buttonMove1{
 	position:relative;
-	left:430px;
+	left:280px;
 }
 .buttonMove2{
 	position:relative;
-	left:150px;
+	left:0px;
 }
 </style>
 <!DOCTYPE html>
@@ -98,8 +98,8 @@ input[type="text"], textarea {
 	<hr>
 	<table>
 		<tr>
-		<td><button type="submit">저장</button></td>
-		<td><button type="button" 
+		<td><button class="buttonMove1" type="submit">저장</button></td>
+		<td><button class="buttonMove2" type="button" 
 		onclick="location.href='listMulti.do?mbGrade=${VOInfo.mbGrade}'">취소</button></td>
 		</tr>
 	</table>

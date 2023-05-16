@@ -13,6 +13,10 @@ font-weight: 700;
 .name0 {
 font-weight: 700;
 }
+.simple{
+	font-size : 30px;
+	color: #003d99;
+}
 </style>
 <meta charset="UTF-8">
 <title>예담복권 소개</title>
@@ -20,9 +24,9 @@ font-weight: 700;
 <body>
 <h2 class="name0">예담복권</h2>
 <hr>
-<img src="./images/복권방로고.png" alt="..." style="width:400px; height:400px; float:left; margin-right: 50px;">
-
-<span>복권소개를 맡은 김욱환인데요, 우리 예담복권을 만든이들을 소개하겠습니다. <br>작성자 :<strong>김욱환</strong><br><br> 
+<img src="./images/복권방로고.png" alt="..." style="width:400px; height:400px; float:left; margin-right: 50px;"><br>
+<span>이쿠조 철학 : <br><strong class="simple">"Simple is the best"</strong></span><br>
+<span>복권소개를 맡은 김욱환인데요, 우리 예담복권을 만든이들을 소개하겠습니다. <br><br><br> 
     팀장 : <strong>김현용</strong><br>좌우명 : <strong>"좋은게 좋은거다";</strong><br><br>
     팀원 : <strong>손희영</strong><br>좌우명 : <strong>"Just do it.";</strong><br><br>
     팀원 : <strong>김욱환</strong><br>좌우명 : <strong>"<a href="https://ko.wikipedia.org/wiki/%EC%95%88%EB%82%98_%EC%B9%B4%EB%A0%88%EB%8B%88%EB%82%98_%EB%B2%95%EC%B9%99">안나 카레니나 법칙</a>";</strong><br><br>
